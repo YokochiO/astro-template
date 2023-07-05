@@ -1,0 +1,33 @@
+@use '../variables/' as var;
+@use '../object/utility/' as u;
+
+.l-header {
+  padding-top: 25.8px;
+  &__logo {
+    @include u.fx-aCenter;
+    gap: 0 28px;
+    margin-bottom: 18.6px;
+  }
+  img {
+    width: 120px;
+    height: auto;
+  }
+  &__text {
+    font-size: var.get(fs, ll);
+  }
+}
+@include u.media-query(sp) {
+  .l-header {
+    padding-top: u.media-px(26);
+    &__logo {
+      gap: 0 u.media-px(28);
+      margin-bottom: u.media-px(16);
+    }
+    img {
+      width: u.media-px(120);
+    }
+    &__text {
+      font-size: u.media-px(20);
+    }
+  }
+}

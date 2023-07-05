@@ -1,0 +1,134 @@
+@use '../../variables/' as var;
+@use '../utility/' as u;
+
+.p-sentaku {
+  &__box1 {
+    margin-bottom: 91px;
+    border: 1px solid var.get(cl, weak);
+    // ⽴候補される場合はチェックしてください。のチェックボックス
+    .c-form__checkbox-wrap {
+      width: 400px;
+      margin: 0 auto;
+      label {
+        width: 100%;
+        height: 50px;
+        border: 3px solid;
+        border-radius: 5px;
+        background: var.get(cl, bg);
+        font-size: var.get(fs, l);
+        transition: 0.2s all;
+      }
+    }
+    .c-form__checkbox + label {
+      &::before {
+        left: 15px;
+      }
+      &::after {
+        left: 19px;
+      }
+    }
+    .c-box__candidacy .c-form__checkbox-wrap label {
+      border-color: var.get(cl, primary1);
+      color: var.get(cl, primary1);
+    }
+    .c-box__candidacy .c-form__checkbox-wrap :checked + label {
+      border-color: var.get(cl, text);
+      background: var.get(cl, primary1);
+      color: var.get(cl, bg);
+      &::before {
+        border-color: var.get(cl, text);
+      }
+    }
+  }
+  @include u.media-query(sp) {
+    &__box1 {
+      margin-bottom: u.media-px(60);
+      .c-form__checkbox-wrap {
+        width: auto;
+        label {
+          height: u.media-px(50);
+          border: u.media-px(3) solid;
+          border-radius: u.media-px(5);
+          font-size: u.media-px(18);
+        }
+      }
+      .c-form__checkbox + label {
+        &::before {
+          left: u.media-px(15);
+        }
+        &::after {
+          left: u.media-px(19);
+        }
+      }
+    }
+  }
+  &__recommends {
+    border: 1px solid var.get(cl, weak);
+  }
+  + .c-heading__title--s1 {
+    margin-bottom: 40px;
+  }
+}
+
+.p-sentaku__filters {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, auto));
+  justify-content: center;
+  position: relative;
+  gap: 10px 5px;
+  padding: 40px 20px;
+  background: var.get(cl, weak);
+  &::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 14px;
+    background: var.get(cl, weak);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+@include u.media-query(md) {
+  .p-sentaku__filters {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+
+    :nth-child(1) {
+      grid-column: 1;
+    }
+    :nth-child(2) {
+      grid-column: 2;
+    }
+    :nth-child(3) {
+      grid-column: 1 / span 2;
+      width: 100%;
+    }
+    :nth-child(4) {
+      grid-column: 1;
+    }
+    :nth-child(5) {
+      grid-column: 2;
+      width: fit-content;
+      justify-self: end;
+    }
+  }
+}
+@include u.media-query(sp) {
+  .p-sentaku__filters {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: u.media-px(10) u.media-px(5);
+    padding: u.media-px(20) u.media-px(20);
+    &::after {
+      // 100%だと謎の隙間が発生することがある
+      top: 99%;
+      width: u.media-px(24);
+      height: u.media-px(14);
+    }
+    :nth-child(4) {
+      margin-right: u.media-px(-40);
+    }
+  }
+}

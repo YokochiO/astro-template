@@ -1,0 +1,31 @@
+// variables
+@use 'sass:map';
+@use 'sass:color';
+
+@use './color' as cl;
+@use './font';
+@use './text';
+
+// :rootに登録するグローバル変数
+$var: (
+  cl: cl.$color,
+  ff: font.$family,
+  fs: font.$size,
+  fw: font.$weight,
+  lh: text.$line-height,
+);
+
+// css関数のvar()を取得する
+@function get($type, $name: default) {
+  @if map.has-key($var, $type, $name) {
+    @return var(--#{$type}-#{$name});
+  }
+  @error 'Undefined $type or $name';
+}
+
+// 色の透明度変更 $aは%、負の値で薄くなる
+@function color-opacity($color, $a) {
+  @if map.has-key($var, cl, $color) {
+    @return color.scale(map.get($var, cl, $color), $alpha: $a);
+  }
+}

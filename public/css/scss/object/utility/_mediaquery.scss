@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use 'sass:math';
+
+$breakpoints: (
+  lg: '(max-width: 1280px)',
+  md: '(max-width: 1120px)',
+  sm: '(max-width: 880px)',
+  sp: '(max-width: 786px)',
+);
+
+@mixin query($q) {
+  @media screen and #{map.get($breakpoints, $q)} {
+    @content;
+  }
+}
+
+@function px($px) {
+  @return #{math.div($px, 7.86) * 2}vw;
+}

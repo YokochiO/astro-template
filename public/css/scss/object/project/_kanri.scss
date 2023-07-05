@@ -1,0 +1,378 @@
+@use '../../variables/' as var;
+@use '../utility/' as u;
+
+@use './kanri_comments';
+@use './kanri_heading';
+@use './kanri_modal';
+
+@mixin button-filter {
+  filter: brightness(1.14);
+}
+
+// ------------------------------------
+// ボックス
+// ------------------------------------
+.p-kanri {
+  &__header {
+    text-align: center;
+    padding-bottom: 45px;
+  }
+  &__box {
+    @include u.fx-center;
+    flex-direction: column;
+    padding: 57px 0 79px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    &:first-child {
+      margin-top: 45px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &1 {
+      background: var.get(cl, gray2);
+      h2 {
+        color: var.get(cl, bg);
+        margin-bottom: 41px;
+      }
+    }
+    &2 {
+      background: var.get(cl, gray1);
+    }
+  }
+  // main以下最初のボックス
+  &__first-box {
+    margin-top: 45px;
+  }
+}
+
+// ------------------------------------
+// 受付状況
+// ------------------------------------
+.p-kanri__uketuke {
+  // 凡例
+  &--legend {
+    @include u.fx-aCenter;
+    gap: 0 20px;
+    width: max-content;
+    margin: 0 0 20px auto;
+    font-size: var.get(fs, ss);
+    li {
+      @include u.fx-center;
+      gap: 0 4px;
+    }
+  }
+}
+.c-table__kanri + .p-kanri__h2-2 {
+  margin-top: 70px;
+}
+
+// ------------------------------------
+// アイコン
+// ------------------------------------
+.p-kanri__icon {
+  @include u.fx-center;
+  width: 20px;
+  height: 20px;
+  &.u-icon__recepted {
+    background: var.get(cl, primary2-light);
+  }
+  &.u-icon__comments {
+    padding-bottom: 5px;
+    color: var.get(cl, bg);
+    font-size: var.get(fs, ss);
+  }
+  td &.u-icon__comments {
+    font-weight: var.get(fw, default);
+  }
+}
+.p-kanri__status {
+  @include u.fx-center;
+  gap: 0 5px;
+}
+
+// ------------------------------------
+// ボタン
+// ------------------------------------
+.p-kanri__button {
+  &-1 {
+    @include u.fx-center;
+    width: 80px;
+    height: 29px;
+    border: 1px solid var.get(cl, text);
+    border-radius: 5px;
+    background: var.get(cl, bg);
+  }
+}
+
+// ------------------------------------
+// 横並びのプルダウン
+// ------------------------------------
+.p-kanri__selects {
+  @include u.fx-center;
+  gap: 0 5px;
+  margin-bottom: 34px;
+  &.p-kanri__selects--comment {
+    margin-bottom: 84px;
+  }
+}
+
+// ------------------------------------
+// トップのリンク
+// ------------------------------------
+.p-kanri__top {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 250px);
+  grid-template-rows: repeat(2, 115px);
+  gap: 40px 50px;
+  &::after {
+    @include u.i-image(right-arrow);
+    content: '';
+    display: block;
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, 0);
+  }
+  a {
+    @include u.fx-center;
+    position: relative;
+    flex-direction: column;
+    width: 250px;
+    height: 115px;
+    border-radius: 10px;
+    border: 3px solid;
+    font-size: var.get(fs, ll);
+    background: var.get(cl, bg);
+    transition: 0.2s filter;
+  }
+  a::before {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 7px;
+    background-position: center;
+  }
+  a:hover {
+    @include button-filter;
+  }
+  a:nth-of-type(1)::before {
+    @include u.i-image(gear);
+  }
+  a:nth-of-type(2)::before {
+    @include u.i-image(lock);
+  }
+  a:nth-of-type(3)::before {
+    @include u.i-image(accept);
+  }
+  a:nth-of-type(4)::before {
+    @include u.i-image(comment);
+  }
+}
+
+// ------------------------------------
+// 会員名簿登録
+// ------------------------------------
+.p-kanri__touroku {
+  &1 {
+    h2 {
+      margin-bottom: 23px;
+    }
+    p {
+      margin-bottom: 40px;
+      font-size: var.get(fs, l);
+    }
+    &--button {
+      flex-direction: column;
+      flex-wrap: wrap;
+      text-align: center;
+      width: 310px;
+      height: 150px;
+      padding: 0 40px;
+      font-size: var.get(fs, ll);
+      background: var.get(cl, primary1-dark);
+      color: var.get(cl, bg);
+      transition: 0.2s filter;
+      &::before {
+        @include u.i-image(upload);
+        content: '';
+        display: block;
+        width: 27px;
+        height: 36px;
+        margin-bottom: 11px;
+      }
+      &:hover {
+        @include button-filter;
+      }
+    }
+  }
+  &2 {
+    padding: 73px 0 83px;
+    &--button {
+      width: 240px;
+      height: 80px;
+      font-size: var.get(fs, ll);
+      background: var.get(cl, gray2-dark);
+      color: var.get(cl, bg);
+      transition: 0.2s background;
+      &:hover {
+        background: var.get(cl, gray2);
+      }
+    }
+  }
+}
+
+// ------------------------------------
+// パスコード発行
+// ------------------------------------
+.p-kanri__pwd-issue {
+  display: grid;
+  grid-template-columns: 250px 400px 250px;
+  justify-content: center;
+  padding: 37px 0 53px;
+  .p-kanri__pwd-issue--status {
+    @include u.fx-center;
+    flex-direction: column;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+    font-size: var.get(fs, xl);
+    color: var.get(cl, primary1);
+    line-height: var.get(lh, default);
+    span {
+      font-size: var.get(fs, default);
+    }
+  }
+  .p-kanri__pwd-issue--button {
+    grid-column: 3;
+    grid-row: 1;
+    width: 250px;
+    height: 115px;
+    text-align: center;
+    font-size: var.get(fs, ll);
+    border: 3px solid var.get(cl, primary1-dark);
+    border-radius: 10px;
+    color: var.get(cl, primary1-dark);
+    transition: 0.2s border, 0.2s color;
+    &:hover {
+      border-color: var.get(cl, primary1);
+      color: var.get(cl, primary1);
+    }
+  }
+}
+
+// ------------------------------------
+// カラバリ
+// ------------------------------------
+// 赤
+.p-kanri__primary1 {
+  $cl: var.get(cl, primary1);
+  $cl-d: var.get(cl, primary1-dark);
+  // トップのボタン
+  .p-kanri__top & {
+    border-color: $cl-d;
+    color: $cl-d;
+  }
+  // コメント一覧の見出し
+  &.p-kanri__hgroup-3 {
+    border-color: $cl;
+    &::before {
+      background: $cl;
+    }
+    h3 {
+      color: $cl;
+    }
+  }
+  &.p-kanri__box--comments {
+    &::before {
+      background: $cl;
+    }
+    .p-kanri__comments--comment {
+      border-color: $cl;
+    }
+    h4 {
+      color: $cl;
+    }
+  }
+  // コメント一覧の立候補
+  &.p-kanri__comments--comment {
+    border-color: $cl;
+    h3 {
+      color: $cl;
+    }
+  }
+}
+// 緑
+.p-kanri__primary2 {
+  $cl: var.get(cl, primary2);
+  $cl-d: var.get(cl, primary2-dark);
+  // トップのボタン
+  .p-kanri__top & {
+    border-color: $cl-d;
+    color: $cl-d;
+  }
+  // コメント一覧の見出し
+  &.p-kanri__hgroup-3 {
+    border-color: $cl;
+    &::before {
+      background: $cl;
+    }
+    h3 {
+      color: $cl;
+    }
+  }
+  &.p-kanri__box--comments {
+    &::before {
+      background: $cl;
+    }
+    .p-kanri__comments--comment {
+      border-color: $cl;
+      // 依頼の時は黒
+      &.p-kanri__comments--request {
+        border-color: var.get(cl, gray2);
+      }
+    }
+    h4 {
+      color: $cl;
+    }
+  }
+  .p-kanri__comments--request & {
+    background: $cl-d;
+    transition: 0.2s background;
+    &:hover {
+      background: $cl;
+    }
+  }
+  // コメント一覧の被推薦
+  &.p-kanri__comments--comment {
+    border-color: $cl;
+    h3 {
+      color: $cl;
+    }
+  }
+}
+// グレー
+.p-kanri__refuse {
+  $cl: var.get(cl, gray1);
+  // コメント一覧の辞退
+  &.p-kanri__comments--comment {
+    border-color: $cl;
+    background: $cl;
+    h3 {
+      color: var.get(cl, gray2);
+    }
+  }
+}
+// 白？
+.p-kanri__undecided {
+  &.p-kanri__comments--comment {
+    border-color: var.get(cl, gray2);
+    h3 {
+      color: var.get(cl, gray2);
+    }
+  }
+}

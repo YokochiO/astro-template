@@ -1,0 +1,106 @@
+@use '../../variables/' as var;
+@use '../utility/' as u;
+
+.c-heading__title {
+  @include u.fx-center;
+  .l-header__logo + & {
+    margin-top: 34px;
+  }
+}
+@include u.media-query(sp) {
+  .c-heading__title {
+    flex-direction: column;
+    .l-header__logo + & {
+      margin-top: 0;
+    }
+  }
+}
+
+.c-heading__title--s1 {
+  @include u.fx-center;
+  flex-direction: column;
+  gap: 8px 0;
+  margin-bottom: 64px;
+  .note {
+    display: block;
+    font-size: var.get(fs, s);
+    text-align: center;
+  }
+}
+@include u.media-query(sp) {
+  .c-heading__title--s1 {
+    margin-top: u.media-px(19);
+    gap: u.media-px(8) 0;
+    margin-bottom: u.media-px(33);
+    .note {
+      font-size: u.media-px(14);
+    }
+  }
+}
+
+.c-heading__h1 {
+  font-size: var.get(fs, h);
+}
+@include u.media-query(sp) {
+  .c-heading__h1 {
+    font-size: u.media-px(24);
+  }
+}
+
+.c-heading__h1--l {
+  font-size: var.get(fs, xl);
+  margin-bottom: 53px;
+}
+@include u.media-query(sp) {
+  .c-heading__h1--l {
+    font-size: u.media-px(24);
+    margin-bottom: u.media-px(53);
+  }
+}
+
+.c-heading__h1--s {
+  font-size: var.get(fs, l);
+  line-height: var.get(lh, default);
+  text-align: center;
+  strong {
+    font-weight: var.get(fs, default);
+    color: var.get(cl, primary1);
+  }
+  .c-box__nominated & {
+    color: var.get(cl, primary2);
+  }
+}
+@include u.media-query(sp) {
+  .c-heading__h1--s {
+    font-size: u.media-px(18);
+    padding-left: u.media-px(50);
+    padding-right: u.media-px(50);
+  }
+}
+
+.c-heading__h2 {
+  font-size: var.get(fs, l);
+}
+@include u.media-query(sp) {
+  .c-heading__h2 {
+    font-size: u.media-px(18);
+  }
+}
+
+.c-heading__h2--message {
+  font-size: var.get(fs, xl);
+  text-align: center;
+  margin-bottom: 20px;
+  .c-box__candidacy & {
+    color: var.get(cl, primary1);
+  }
+  .c-box__nominated & {
+    color: var.get(cl, primary2);
+  }
+}
+@include u.media-query(sp) {
+  .c-heading__h2--message {
+    font-size: u.media-px(24);
+    margin-bottom: u.media-px(20);
+  }
+}

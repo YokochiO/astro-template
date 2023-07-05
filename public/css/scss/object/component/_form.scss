@@ -1,0 +1,347 @@
+@use '../../variables/' as var;
+@use '../utility/' as u;
+
+.c-form__group {
+  width: 400px;
+  margin: 0 auto 32px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  input[type='tel'],
+  input[type='email'],
+  input[type='text'],
+  input[type='password'] {
+    display: block;
+    margin: 0 auto;
+  }
+}
+@include u.media-query(sp) {
+  .c-form__group {
+    width: auto;
+    margin: 0 auto u.media-px(38);
+    padding: 0 u.media-px(26);
+  }
+}
+
+.c-form__label {
+  display: block;
+  font-size: var.get(fs, l);
+  margin-bottom: 15px;
+  small {
+    font-size: var.get(fs, default);
+  }
+}
+@include u.media-query(sp) {
+  .c-form__label {
+    font-size: u.media-px(18);
+    margin-bottom: u.media-px(16);
+    small {
+      font-size: u.media-px(14);
+    }
+  }
+}
+
+.c-form__value {
+  display: block;
+  font-size: var.get(fs, l);
+  background: var.get(cl, bg);
+  padding: 12px 0 14px;
+}
+@include u.media-query(sp) {
+  .c-form__value {
+    font-size: u.media-px(18);
+    padding: u.media-px(12) 0 u.media-px(14);
+  }
+}
+
+.c-form__note {
+  display: block;
+  font-size: var.get(fs, s);
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: var.get(lh, default);
+}
+@include u.media-query(sp) {
+  .c-form__note {
+    font-size: u.media-px(14);
+    margin-bottom: u.media-px(15);
+    br {
+      display: none;
+    }
+  }
+}
+
+.c-form__item {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  border: 3px solid var.get(cl, text);
+  border-radius: 5px;
+  padding: 0 13px;
+  font-size: var.get(fs, l);
+  .c-box__candidacy & {
+    border-color: var.get(cl, primary1);
+  }
+  .c-box__nominated & {
+    border-color: var.get(cl, primary2);
+  }
+  + .c-form__note {
+    padding-top: 13px;
+    margin-bottom: 0;
+  }
+}
+@include u.media-query(sp) {
+  .c-form__item {
+    height: u.media-px(50);
+    border-width: u.media-px(3);
+    border-radius: u.media-px(5);
+    padding: 0 u.media-px(13);
+    font-size: u.media-px(18);
+    + .c-form__note {
+      padding-top: u.media-px(13);
+      margin-bottom: 0;
+    }
+  }
+}
+
+.c-form__checkbox-wrap {
+  @include u.fx-aCenter;
+}
+
+// フォーム部品のベース
+.c-form__parts {
+  @include u.fx-center;
+  box-sizing: border-box;
+  border: 3px solid var.get(cl, text);
+  border-radius: 5px;
+  height: 50px;
+}
+@include u.media-query(sp) {
+  .c-form__parts {
+    border-width: u.media-px(3);
+    border-radius: u.media-px(5);
+    height: u.media-px(50);
+  }
+}
+
+// select
+.c-form__select {
+  appearance: none;
+  padding: 0 30px 0 15px;
+  @include u.i-image(dropdown);
+  background-color: var.get(cl, bg);
+  background-size: 18px 18px;
+  background-position: center right 7px;
+}
+@include u.media-query(sp) {
+  .c-form__select {
+    padding: 0 u.media-px(40) 0 u.media-px(15);
+    background-size: u.media-px(18) u.media-px(18);
+    background-position: center right u.media-px(7);
+  }
+}
+
+// input[type="text"]
+.c-form__text {
+  padding: 0 12px;
+  &--full {
+    width: 100%;
+  }
+  &--half {
+    width: 50%;
+  }
+}
+@include u.media-query(sp) {
+  .c-form__text {
+    padding: 0 u.media-px(15);
+  }
+}
+
+.c-form__button {
+  padding: 0 20px;
+  font-size: var.get(fs, default);
+  color: var.get(cl, bg);
+  .c-box__candidacy & {
+    background: var.get(cl, primary1);
+  }
+}
+@include u.media-query(sp) {
+  .c-form__button {
+    padding: 0 u.media-px(20);
+    font-size: u.media-px(16);
+  }
+}
+
+// チェックボックス
+.c-form__checkbox {
+  width: 0;
+  height: 0;
+  appearance: none;
+  opacity: 0;
+  + label {
+    @include u.fx-center;
+    position: relative;
+    transition: 0.2s all;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    &::before {
+      width: 22px;
+      height: 22px;
+      border: 3px solid;
+      border-radius: 3px;
+      background: var.get(cl, gray1);
+      left: 0;
+      transition: 0.2s border;
+    }
+    // チェックの画像は left + 4px
+    &::after {
+      width: 14px;
+      height: 11px;
+      left: 4px;
+      opacity: 0;
+      transition: 0.2s opacity;
+    }
+    // labelが空文字列の時はいちおう高さと幅を設定しておく
+    &:empty {
+      width: 22px;
+      height: 22px;
+    }
+  }
+  &:focus-visible + label {
+    outline: 4px solid var.get(cl, outline);
+  }
+  &:checked + label {
+    &::after {
+      opacity: 1;
+    }
+  }
+  // カラバリ
+  &.c-form__checkbox--default {
+    + label {
+      &::before {
+        border-color: var.get(cl, text);
+      }
+      &::after {
+        @include u.i-contain(check);
+      }
+    }
+  }
+  &.c-form__checkbox--candidacy {
+    + label {
+      &::before {
+        border-color: var.get(cl, primary1);
+      }
+      &::after {
+        @include u.i-contain(check);
+      }
+    }
+  }
+  &.c-form__checkbox--nominated {
+    + label {
+      &::before {
+        border-color: var.get(cl, primary2);
+      }
+      &::after {
+        @include u.i-contain(check-g);
+      }
+    }
+  }
+}
+@include u.media-query(sp) {
+  .c-form__checkbox {
+    + label {
+      &::before {
+        width: u.media-px(22);
+        height: u.media-px(22);
+        border: u.media-px(3) solid;
+        border-radius: u.media-px(3);
+      }
+      // チェックの画像は left + 4px
+      &::after {
+        width: u.media-px(14);
+        height: u.media-px(11);
+        left: u.media-px(4);
+      }
+      &:empty {
+        width: u.media-px(22);
+        height: u.media-px(22);
+      }
+    }
+  }
+}
+
+// テーブルセル内のチェックボックス
+th .c-form__checkbox-wrap {
+  padding: 14px 18px;
+  background: var.get(cl, weak);
+  tr.c-table__row--checked & {
+    background: var.get(cl, primary1);
+  }
+}
+.u-js__check-clickable {
+  th {
+    background: var.get(cl, weak);
+  }
+  &.c-table__row--checked {
+    th {
+      background: var.get(cl, primary1);
+    }
+  }
+}
+@include u.media-query(sp) {
+  th .c-form__checkbox-wrap {
+    @include u.fx-center;
+    width: u.media-px(64);
+    padding: 0;
+  }
+  .u-js__check-clickable {
+    th {
+      background: var.get(cl, weak);
+    }
+    &.c-table__row--checked {
+      th {
+        background: var.get(cl, primary1);
+      }
+    }
+  }
+}
+
+.c-form__textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  resize: vertical;
+}
+@include u.media-query(sp) {
+  .c-form__textarea {
+    padding: u.media-px(15);
+  }
+}
+
+.c-form__row {
+  margin-bottom: 36px;
+}
+
+// エラーメッセージ
+.c-form__error:not(:empty) {
+  display: block;
+  color: var.get(cl, primary1);
+  font-size: var.get(fs, default);
+  padding-top: 10px;
+}
+@include u.media-query(sp) {
+  .c-form__error:not(:empty) {
+    font-size: u.media-px(16);
+    padding-top: u.media-px(10);
+  }
+}
+
+::placeholder {
+  color: var.get(cl, weak);
+}

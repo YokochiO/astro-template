@@ -1,0 +1,41 @@
+{
+  "prettier.printWidth": 80,
+  "trailingComma": "es5",
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "prettier.printWidth": 240,
+        "printWidth": 240,
+        "bracketSameLine": true,
+        "htmlWhitespaceSensitivity": "ignore"
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {
+        "prettier.printWidth": 120,
+        "printWidth": 120
+      }
+    },
+    {
+      "files": "*.ts",
+      "options": {
+        "prettier.printWidth": 80,
+        "printWidth": 80
+      }
+    },
+    {
+      "files": "*.astro",
+      "options": {
+        "prettier.printWidth": 240,
+        "printWidth": 240
+      }
+    }
+  ]
+}

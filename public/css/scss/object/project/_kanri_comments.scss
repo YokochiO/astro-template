@@ -1,0 +1,213 @@
+@use '../../variables/' as var;
+@use '../utility/' as u;
+
+// コメント一覧
+
+.p-kanri__box--comments {
+  position: relative;
+  border-top: 1px solid var.get(cl, weak);
+  margin-bottom: 90px;
+  padding: 45px 0 0 40px;
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: 40px;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 37px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  $p1: var.get(cl, primary1);
+  $p2: var.get(cl, primary2);
+  $bg: var.get(cl, bg);
+  &[data-entry]::before {
+    background: linear-gradient(to right, $p1, $p1 15px, $bg 15px);
+  }
+  &[data-nominated]::before {
+    background: linear-gradient(to right, $p2, $p2 15px, $bg 15px);
+  }
+  &[data-entry][data-nominated]::before {
+    background: linear-gradient(to right, $p1, $p1 15px, $bg 15px, $bg 22px, $p2 22px);
+  }
+}
+.p-kanri__comments--status {
+  grid-column: 1;
+  grid-row: 1;
+  ul {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 11px 28px;
+    font-size: var.get(fs, ss);
+  }
+  li {
+    word-break: break-all;
+  }
+  li:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: var.get(fs, default);
+  }
+  li:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: var.get(fs, default);
+  }
+  li:nth-of-type(3) {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    font-size: var.get(fs, l);
+    span {
+      font-size: var.get(fs, s);
+    }
+  }
+  li:nth-of-type(4),
+  li:nth-of-type(5),
+  li:nth-of-type(6),
+  li:nth-of-type(7) {
+    grid-column: 1 / span 2;
+    font-weight: var.get(fw, regular);
+    color: var.get(cl, gray2);
+  }
+}
+.p-kanri__comments--group {
+  grid-column: 2;
+  grid-row: 1;
+}
+.p-kanri__comments--comment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 22px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  h3 {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: var.get(fs, ll);
+    margin-bottom: 22px;
+  }
+  .p-kanri__comments--modified {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: var.get(fs, ss);
+    text-align: right;
+    color: var.get(cl, gray2);
+  }
+  .p-kanri__comments--text {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    font-size: var.get(fs, s);
+    line-height: var.get(lh, default);
+    p {
+      margin-bottom: 1em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  // 依頼する
+  .p-kanri__comments--request-group {
+    grid-column: 1 / span 2;
+    width: 280px;
+    margin: 0 auto;
+    button {
+      width: 100%;
+      height: 80px;
+      font-size: var.get(fs, ll);
+      color: var.get(cl, bg);
+      margin-bottom: 20px;
+    }
+    ul {
+      font-size: var.get(fs, s);
+      font-weight: var.get(fw, regular);
+    }
+    li {
+      margin-bottom: 7px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+.p-kanri__comments--recommender {
+  grid-column: 1 / span 2;
+  summary {
+    @include u.fx-center;
+    height: 80px;
+    position: relative;
+    font-size: var.get(fs, default);
+    position: relative;
+    &::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+  &:not([open]) {
+    summary {
+      background: var.get(cl, summary);
+      border-radius: 10px;
+      &::after {
+        @include u.i-image(details-open);
+        right: 20px;
+      }
+    }
+  }
+  &[open] {
+    padding: 0 40px 40px 40px;
+    border-radius: 10px;
+    background: var.get(cl, details);
+    summary {
+      color: var.get(cl, bg);
+      &::after {
+        @include u.i-image(details-close);
+        right: -20px;
+      }
+    }
+  }
+}
+.p-kanri__comments--cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.p-kanri__comments--card {
+  padding: 18px 20px 26px;
+  background: var.get(cl, bg);
+  .p-kanri__comments--status {
+    ul {
+      gap: 8px 24px;
+      li:nth-of-type(1),
+      li:nth-of-type(2) {
+        font-size: var.get(fs, ss);
+        font-weight: var.get(fw, regular);
+        color: var.get(cl, gray2);
+      }
+      li:nth-of-type(3),
+      li:nth-of-type(4) {
+        font-size: var.get(fs, s);
+      }
+    }
+  }
+  .p-kanri__comments--text {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var.get(cl, gray2);
+    font-size: var.get(fs, ss);
+    line-height: var.get(lh, default);
+  }
+}

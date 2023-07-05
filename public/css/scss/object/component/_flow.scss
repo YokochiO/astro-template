@@ -1,0 +1,66 @@
+@use '../../variables/' as var;
+@use '../utility/' as u;
+
+.c-flow {
+  @include u.fx-aCenter;
+  gap: 0 14px;
+  &:not(:last-child) {
+    margin-bottom: 34px;
+  }
+  &__heading {
+    font-size: var.get(fs, l);
+    margin-right: 11px;
+  }
+  dd {
+    @include u.fx-aCenter;
+    gap: 0 11px;
+    font-size: var.get(fs, s);
+  }
+  dd:before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 10px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    background: var.get(cl, weak);
+  }
+  & dd:not(&__active) {
+    color: var.get(cl, weak);
+  }
+  &__active {
+    color: var.get(cl, text);
+  }
+}
+@include u.media-query(md) {
+  .c-flow {
+    flex-wrap: wrap;
+    row-gap: 7px;
+    &__heading {
+      width: 100%;
+      margin-bottom: 3px;
+    }
+  }
+}
+@include u.media-query(sp) {
+  .c-flow {
+    border-top: 1px solid var.get(cl, text);
+    padding-top: u.media-px(16);
+    column-gap: u.media-px(14);
+    row-gap: u.media-px(7);
+    &:not(:last-child) {
+      margin-bottom: u.media-px(17);
+    }
+    &__heading {
+      font-size: u.media-px(18);
+      margin-bottom: u.media-px(3);
+    }
+    dd {
+      gap: 0 u.media-px(15);
+      font-size: u.media-px(12);
+    }
+    dd:before {
+      width: u.media-px(5);
+      height: u.media-px(10);
+    }
+  }
+}

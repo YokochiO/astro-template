@@ -1,0 +1,121 @@
+@use '../../variables/' as var;
+@use '../utility/' as u;
+
+// 見出し
+
+.p-kanri {
+  &__h1 {
+    font-size: var.get(fs, xl);
+  }
+  // 管理画面トップの見出し
+  main &__h1 {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+
+  &__h2-1 {
+    @include u.fx-center;
+    text-align: center;
+    margin-top: 45px;
+    height: 93px;
+    background: var.get(cl, primary1);
+    color: var.get(cl, bg);
+    font-size: var.get(fs, xl);
+  }
+  &__h2-2 {
+    margin-bottom: 32px;
+    padding: 9px 0 12px;
+    text-align: center;
+    font-size: var.get(fs, l);
+    background: var.get(cl, gray2);
+    color: var.get(cl, bg);
+    .c-table__users + & {
+      margin-top: 60px;
+    }
+  }
+  &__h3-1 {
+    margin-bottom: 22px;
+    text-align: center;
+    font-size: var.get(fs, l);
+  }
+  &__hgroup {
+    text-align: center;
+    width: 400px;
+    min-height: 50px;
+    padding-top: 10px;
+    p {
+      margin-top: 13px;
+      padding-top: 13px;
+      border-top: 1px solid var.get(cl, weak);
+      font-size: var.get(fs, xl);
+    }
+  }
+  &__hgroup-2 {
+    display: grid;
+    grid-template-columns: 203px 1fr 203px;
+    align-items: center;
+    margin-bottom: 49px;
+    padding: 25px;
+    border: 5px solid var.get(cl, primary2);
+    h2 {
+      grid-column: 2;
+      grid-row: 1;
+      font-size: var.get(fs, xl);
+      text-align: center;
+    }
+    button {
+      grid-column: 3;
+      grid-row: 1;
+      gap: 0 18px;
+      width: 203px;
+      height: 80px;
+      border: 3px solid var.get(cl, gray2-dark);
+      color: var.get(cl, gray2-dark);
+      font-size: var.get(fs, default);
+      transition: 0.2s color, 0.2s border-color;
+      background: var.get(cl, bg);
+      &::before {
+        @include u.i-image(download);
+        content: '';
+        display: block;
+        width: 27px;
+        height: 36px;
+      }
+      &:hover {
+        color: var.get(cl, gray2);
+        border-color: var.get(cl, gray2);
+      }
+    }
+  }
+  &__hgroup-2--bg {
+    background: var.get(cl, primary2);
+    color: var.get(cl, bg);
+  }
+  &__hgroup-3 {
+    position: relative;
+    width: 260px;
+    height: 112px;
+    border-bottom: 1px solid;
+    margin-bottom: 100px;
+    padding-left: 70px;
+    &::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    h3 {
+      font-size: var.get(fs, xl);
+      margin-bottom: 23px;
+    }
+    p {
+      font-size: var.get(fs, l);
+    }
+  }
+  .l-wrapper + &__hgroup-3 {
+    margin-top: 100px;
+  }
+}

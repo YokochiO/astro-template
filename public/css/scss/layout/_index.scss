@@ -1,0 +1,50 @@
+// layout
+@use './aside';
+@use './header';
+@use './main';
+@use './footer';
+@use '../object/utility/' as u;
+
+// 2カラムになることがあるのでgrid
+body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+}
+// 左側
+.l-header {
+  grid-column: 1;
+  grid-row: 1;
+}
+.l-main {
+  grid-column: 1;
+  grid-row: 2;
+}
+.l-footer {
+  grid-column: 1;
+  grid-row: 3;
+}
+// 右側
+.l-aside {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+}
+@include u.media-query(sm) {
+  body {
+    display: block;
+  }
+}
+
+// max1080pxのラッパー
+.l-wrapper {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+@include u.media-query(sp) {
+  .l-wrapper {
+    max-width: 100%;
+    padding-right: u.media-px(20);
+    padding-left: u.media-px(20);
+  }
+}
