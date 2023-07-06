@@ -1,25 +1,7 @@
 @use '../variables/' as var;
 @use '../object/utility/' as u;
 
-$defaultFontsize: 62.5%;
-
-:root {
-  @each $type, $group in var.$var {
-    @each $k, $v in $group {
-      --#{$type}-#{$k}: #{$v};
-    }
-  }
-
-  font-size: $defaultFontsize;
-  font-family: var.get(ff, default);
-  font-weight: var.get(fw, default);
-  font-feature-settings: 'palt' 1;
-
-  color: var.get(cl, text);
-  background-color: var.get(cl, bg);
-}
-
-// フォーム部品用に追加
+// フォームの部品
 input,
 textarea,
 select {
@@ -27,41 +9,22 @@ select {
   margin: 0;
   font-family: var.get(ff, default);
   font-size: var.get(fs, default);
-  color: var.get(cl, text-dark);
+  color: var.get(cl, text);
   display: block;
 }
-@include u.media-query(sp) {
-  input,
-  textarea,
-  select {
-    font-size: u.media-px(16);
-  }
-}
 
-// 画像はblock要素
-img {
-  display: block;
-  max-width: 100%;
-}
-
-// フォームコントロール要素
-label,
-button,
-select,
-input[type='checkbox'],
-input[type='submit'],
-input[type='button'] {
-  cursor: pointer;
-}
-
-// フォーカスできる要素
+// クリッカブルな要素
 [role='button'],
 [tabindex],
+summary,
+label,
 button,
 select,
 input:not([type='hidden']),
 textarea,
 a[href] {
+  cursor: pointer;
+  // フォーカスできるならアウトラインつける
   &:focus-visible {
     outline: 4px solid var.get(cl, outline);
     outline-offset: 1px;
@@ -77,6 +40,12 @@ summary {
   }
 }
 
+// 画像はblock要素
+img {
+  display: block;
+  max-width: 100%;
+}
+
 // 中身が少なくてもフッターを画面下に配置する
 html,
 body {
@@ -85,13 +54,4 @@ body {
 body > footer {
   position: sticky;
   top: 100vh;
-}
-
-// SP版は横スクロール消す
-@include u.media-query(sp) {
-  html,
-  body {
-    overflow-x: hidden;
-    max-width: 100vw;
-  }
 }

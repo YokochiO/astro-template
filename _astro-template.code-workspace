@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {},
+  "extensions": {
+    "recommendations": ["glenn2223.live-sass", "astro-build.astro-vscode"]
+  }
+}

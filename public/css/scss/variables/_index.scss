@@ -2,6 +2,7 @@
 @use 'sass:map';
 @use 'sass:color';
 
+@use './animation';
 @use './color' as cl;
 @use './font';
 @use './text';
@@ -13,6 +14,7 @@ $var: (
   fs: font.$size,
   fw: font.$weight,
   lh: text.$line-height,
+  dr: animation.$duration,
 );
 
 // css関数のvar()を取得する

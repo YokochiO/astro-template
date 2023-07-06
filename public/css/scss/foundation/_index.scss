@@ -1,20 +1,4 @@
 // foundation
 @use './reset';
+@use './root';
 @use './base';
-@use '../object/utility/' as u;
-
-// ところどころで使うラッパー
-.f-inner {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-@include u.media-query(sp) {
-  .f-inner {
-    padding-left: u.media-px(20);
-    padding-right: u.media-px(20);
-  }
-  .l-main .f-inner {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
