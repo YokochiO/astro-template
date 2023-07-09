@@ -4,8 +4,22 @@
       "path": "."
     }
   ],
-  "settings": {},
+  "settings": {
+    "liveSassCompile.settings.formats": [
+      {
+        "format": "compressed",
+        "extensionName": ".css",
+        "savePath": "~/.."
+      }
+    ],
+    "liveSassCompile.settings.showOutputWindowOn": "Error",
+    "liveSassCompile.settings.watchOnLaunch": true
+  },
   "extensions": {
-    "recommendations": ["glenn2223.live-sass", "astro-build.astro-vscode"]
+    "recommendations": [
+      "glenn2223.live-sass",
+      "astro-build.astro-vscode",
+      "esbenp.prettier-vscode"
+    ]
   }
 }
