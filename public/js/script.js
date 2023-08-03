@@ -1,5 +1,2 @@
-"use strict";
-(() => {
-  // src/ts/app.ts
-  console.log(1);
-})();
+"use strict";(()=>{console.log(1);})();
+//# sourceMappingURL=script.js.map
