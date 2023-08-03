@@ -7,9 +7,9 @@
     "esbase": "esbuild ./src/ts/app.ts --bundle --outfile=./public/js/script.js",
     "esbuild": "npm run esbase -- --sourcemap --minify --sources-content=false",
     "eswatch": "npm run esbase -- --watch",
-    "dev": "astro dev",
+    "dev": "astro dev & npm run eswatch",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build & npm run esbuild",
     "preview": "astro preview",
     "astro": "astro"
   },
