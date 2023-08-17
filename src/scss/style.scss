@@ -3,6 +3,9 @@
 @use './object/' as object;
 @use './variables/' as variables;
 
+body {
+  padding: 2rem;
+}
 h1 {
   color: red;
   font-size: 3rem;

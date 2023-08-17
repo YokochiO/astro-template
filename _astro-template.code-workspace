@@ -9,7 +9,7 @@
       {
         "format": "compressed",
         "extensionName": ".css",
-        "savePath": "~/"
+        "savePath": "~/."
       }
     ],
     "liveSassCompile.settings.showOutputWindowOn": "Error",
