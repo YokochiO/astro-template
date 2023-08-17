@@ -1,18 +1,18 @@
-@use '../variables/' as var;
+@use '../variables/' as v;
 @use '../object/utility/' as u;
 
 $defaultFontsize: 62.5%;
 
 :root {
-  @each $type, $group in var.$var {
+  @each $type, $group in v.$var {
     @each $k, $v in $group {
       --#{$type}-#{$k}: #{$v};
     }
   }
   font-size: $defaultFontsize;
-  font-family: var.get(ff, default);
-  font-weight: var.get(fw, default);
+  font-family: v.get(ff, default);
+  font-weight: v.get(fw, default);
   font-feature-settings: 'palt' 1;
-  color: var.get(cl, text);
-  background-color: var.get(cl, bg);
+  color: v.cl(text);
+  background-color: v.cl(bg);
 }

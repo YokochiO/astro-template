@@ -1,0 +1,25 @@
+@use '../../variables/' as v;
+
+@mixin fx($j: center, $a: center) {
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+  @content;
+}
+@mixin fx-wrap {
+  @include fx {
+    flex-wrap: wrap;
+    @content;
+  }
+}
+@mixin fx-column {
+  @include fx {
+    flex-direction: column;
+    @content;
+  }
+}
+@mixin fx-start {
+  @include fx(flex-start) {
+    @content;
+  }
+}

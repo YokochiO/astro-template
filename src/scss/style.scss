@@ -1,7 +1,8 @@
 @use './foundation/' as foundation;
 @use './layout/' as layout;
 @use './object/' as object;
-@use './variables/' as variables;
+@use './variables/' as v;
+@use './object/utility/' as u;
 
 body {
   padding: 2rem;

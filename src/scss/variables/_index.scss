@@ -31,3 +31,11 @@ $var: (
     @return color.scale(map.get($var, cl, $color), $alpha: $a);
   }
 }
+
+// 色とフォントサイズはショトカを用意
+@function cl($name: default) {
+  @return get(cl, $name);
+}
+@function fs($name: default) {
+  @return get(fs, $name);
+}
