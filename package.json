@@ -2,20 +2,17 @@
   "name": "astro-template",
   "description": "ワイのAstro Template",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
-    "esbase": "esbuild ./src/ts/app.ts --bundle --outfile=./public/js/script.js",
-    "esbuild": "npm run esbase -- --sourcemap --minify --sources-content=false",
-    "eswatch": "npm run esbase -- --watch",
-    "dev": "astro dev & npm run eswatch",
+    "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build & npm run esbuild",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^2.7.2",
-    "esbuild": "^0.18.17"
+    "fs-extra": "^11.1.1"
   },
   "devDependencies": {
     "astro-compress": "1.1.49"

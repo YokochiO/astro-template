@@ -5,23 +5,9 @@ import { defineConfig } from 'astro/config'
 export default defineConfig({
   integrations: [
     compress({
-      // css, jsの圧縮は自前でやる
       css: false,
-      js: false,
-      // svgはviewBoxを勝手に削除しないように
-      svg: {
-        plugins: [
-          {
-            name: 'preset-default',
-            params: {
-              overrides: {
-                removeViewBox: false,
-              },
-            },
-          },
-        ],
-      },
-      // htmlの属性値は常にクオートする
+      img: false,
+      svg: false,
       html: {
         removeAttributeQuotes: false,
       },
@@ -31,11 +17,6 @@ export default defineConfig({
     build: {
       cssCodeSplit: false,
       cssMinify: false,
-    },
-    server: {
-      watch: {
-        usePolling: true,
-      },
     },
   },
 })
