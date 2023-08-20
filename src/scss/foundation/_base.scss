@@ -2,9 +2,7 @@
 @use '../object/utility/' as u;
 
 // フォームの部品
-input,
-textarea,
-select {
+:where(input, textarea, select) {
   all: revert;
   display: block;
   margin: 0;
@@ -15,13 +13,7 @@ select {
 }
 
 // クリッカブルな要素
-[role='button'],
-[tabindex],
-summary,
-label,
-button,
-select,
-a[href] {
+:where([role='button'], [tabindex], summary, label, button, select, a[href]) {
   cursor: pointer;
   // フォーカスできるならアウトラインつける
   &:focus-visible {
@@ -31,7 +23,7 @@ a[href] {
 }
 
 // summary
-summary {
+:where(summary) {
   cursor: pointer;
   list-style: none;
   &::-webkit-details-marker {
@@ -40,18 +32,17 @@ summary {
 }
 
 // 画像はblock要素
-img {
+:where(img) {
   display: block;
   max-width: 100%;
 }
 
 // 中身が少なくてもフッターを画面下に配置する
-html,
-body {
+:where(html, body) {
   min-height: 100vh;
 }
 
-body > footer {
+:where(body > footer) {
   position: sticky;
   top: 100vh;
 }

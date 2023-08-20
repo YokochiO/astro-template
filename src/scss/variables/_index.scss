@@ -1,6 +1,7 @@
 // variables
 @use 'sass:map';
 @use 'sass:color';
+@use 'sass:list';
 
 @use './animation';
 @use './color' as cl;
@@ -18,6 +19,12 @@ $var: (
 );
 
 // css関数のvar()を取得する
+// cl -> 色（ショトカあり）
+// ff -> font-family
+// fs -> font-size（ショトカあり）
+// fw -> font-weight
+// lh -> line-height
+// dr -> duration (traisiton)
 @function get($type, $name: default) {
   @if map.has-key($var, $type, $name) {
     @return var(--#{$type}-#{$name});
@@ -26,7 +33,7 @@ $var: (
 }
 
 // 色の透明度変更 $aは%、負の値で薄くなる
-@function color-opacity($color, $a) {
+@function cl-opacity($color, $a) {
   @if map.has-key($var, cl, $color) {
     @return color.scale(map.get($var, cl, $color), $alpha: $a);
   }
