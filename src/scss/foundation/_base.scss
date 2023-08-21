@@ -31,8 +31,8 @@
   }
 }
 
-// 画像はblock要素
-:where(img) {
+// 画像とiframeはblock要素
+:where(img, iframe) {
   display: block;
   max-width: 100%;
 }
@@ -41,7 +41,6 @@
 :where(html, body) {
   min-height: 100vh;
 }
-
 :where(body > footer) {
   position: sticky;
   top: 100vh;

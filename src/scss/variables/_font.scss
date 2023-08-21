@@ -1,5 +1,7 @@
+// prettier-ignore
 $family: (
   default: #{'sans-serif'},
+  serif:   #{'"Yu Mincho", serif'},
 );
 
 // prettier-ignore
@@ -14,7 +16,9 @@ $size: (
   hl:      4.5rem,
 );
 
+// prettier-ignore
 $weight: (
+  bold:    700,
   default: 500,
   regular: 400,
 );
