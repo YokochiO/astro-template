@@ -1,26 +1,33 @@
 ---
-// CSSのインポートは以下の順番通りに行われる
-// 読み込み順で継承順が変わらないように@layerを採用している
+// ビュートランジション
+// https://docs.astro.build/ja/guides/view-transitions/
+import { ViewTransitions } from 'astro:transitions';
+
+// CSSのインポートは以下の順番通りに行われるのだけど
+// コンポーネントを読み込んだりしていると一定にならない。
+// 読み込み順で優先度が変わらないように@layerを採用している。
 import '@/css/foundation.css'
 import Header from '@/layouts/Header.astro'
 import Main from '@/layouts/Main.astro'
 import Footer from '@/layouts/Footer.astro'
 
 interface Props {
-  title: string
+  title: string,
+  htmlClass?: string | undefined
 }
 
-const { title } = Astro.props
+const { title, htmlClass } = Astro.props
 ---
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class={htmlClass ?? htmlClass}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
     <title>{title}</title>
     <slot name="head-additional" />
+    <ViewTransitions />
   </head>
   <body>
     <Header />

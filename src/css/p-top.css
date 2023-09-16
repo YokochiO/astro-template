@@ -1,6 +1,1 @@
-@layer project.top {
-  .p-top {
-    max-width: 80ch;
-    margin: 0 auto;
-  }
-}
+@layer project.top {}

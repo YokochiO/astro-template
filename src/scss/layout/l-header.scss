@@ -3,11 +3,6 @@
 
 @layer layout.header {
   .l-header {
-    .logo {
-      width: min(100%, 16rem);
-      height: auto;
-      margin: 0 auto 2rem;
-    }
     &__h1 {
       font-size: 3rem;
       text-align: center;

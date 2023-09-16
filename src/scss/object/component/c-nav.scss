@@ -1,0 +1,25 @@
+@use '../../variables/' as v;
+@use '../../object/utility/' as u;
+
+@layer component.nav {
+  .c-nav {
+    margin: 0 0 2rem;
+    padding: 2rem 0;
+    background: rgb(0 0 0 / 0.05);
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(max-content, 10rem));
+      justify-content: center;
+      gap: 0 1rem;
+    }
+    a {
+      display: block;
+      font-size: 1.6rem;
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgb(0 0 0 / 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+  }
+}

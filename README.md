@@ -9,12 +9,12 @@
 - なんとなく Astro の流儀に従う
   - 全体にかかる DefaultLayout.astro では foundation.css をインポートしている
   - 各コンポーネントは自身に関係する css をインポートする
-- JavaScript は適当に
-- ビルドが遅くなって嫌なので`<Image>`は使わない
+  - なんか逆に面倒くさくないか? という時は DefaultLayout.astro で全ての css をインポートしてしまう方法もある。
+- JavaScript はどうしよう?
 
 ## インストール
 
-要 npm
+Node.js v18.14.1 以上
 
 ```sh
 git clone git@github.com:YokochiO/astro-template.git
@@ -53,12 +53,12 @@ base/index.html で以下のように記述すると怒られる（ビルドは�
 
 ## （おまけ）WordPress テーマ対策
 
-- WordPress のテーマも一緒に扱いたい
+- どうせなら WordPress のテーマも一緒に扱いたい
 - 静的ファイルを手動でコピーするのは嫌だ
 
-ということで、ビルド時に copy.js を実行して静的ファイルをコピーする。
+ということで、ビルドが終わったら copy.js を実行して dist から静的ファイルをコピーする。
 
-### copy.js
+### copy.js の設定
 
 ```js
 const toDir = './wordpress-theme' // コピー先（WordPressのテーマフォルダ）
@@ -90,11 +90,4 @@ const files = ['img', '_astro'] // コピー元のファイル・フォルダ
   },
 ```
 
-### .gitignore
-
-コンパイルされた静的ファイルを複数管理したくない。でもテーマフォルダ単体として管理してもいいかも
-
-```.gitignore
-wordpress-theme/img
-wordpress-theme/_astro
-```
+そもそも、こんなことしないといけない状況（要件および仕様）がおかしい、という意見もあります（どこで?）。非常に同意ですが他にどうにもならない場合がほとんどなのです。

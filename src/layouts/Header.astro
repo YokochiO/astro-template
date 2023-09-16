@@ -1,8 +1,27 @@
 ---
 import '@/css/l-header.css'
+import '@/css/c-nav.css'
 ---
 
+<style>
+  /*
+    コンポーネント固有のcssを使ってみる
+    楽だけど乱用するとグチャグチャになりそう。
+  */
+  .logo {
+    width: min(100%, 16rem);
+    height: auto;
+    margin: 0 auto 2rem;
+  }
+</style>
+
 <header class="l-header">
+  <nav class="c-nav">
+    <ul>
+      <li><a href="/">top</a></li>
+      <li><a href="/page">page</a></li>
+    </ul>
+  </nav>
   <hgroup>
     <p class="logo"><img src="/img/favicon.svg" alt="" /></p>
     <h1 class="l-header__h1">ワイのAstroテンプレート</h1>

@@ -1,5 +1,14 @@
 @layer layout.main {
   .l-main {
     padding: 2rem 0;
+    width: min(120ch, 100%);
+    margin: 0 auto 2rem;
+    p {
+      font-size: 1.6rem;
+      line-height: 1.75;
+    }
+    p:not(:last-child) {
+      margin-bottom: 1.5em;
+    }
   }
 }
