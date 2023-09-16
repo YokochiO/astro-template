@@ -8,9 +8,10 @@ interface Props {
 }
 
 const { Hn, className, ...attrs } = Astro.props
-const classNameDefault = className ?? `c-heading__${Hn}`
+
+const defaultClass = `c-heading__${Hn}`
 ---
 
-<Hn class={classNameDefault} {...attrs}>
+<Hn class={className ?? defaultClass} {...attrs}>
   <slot />
 </Hn>
