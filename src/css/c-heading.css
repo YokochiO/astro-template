@@ -1,0 +1,5 @@
+@layer component.heading {
+  .c-heading__h2 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,10 @@
+@use '../../variables/' as v;
+@use '../../object/utility/' as u;
+
+@layer component.heading {
+  .c-heading {
+    &__h2 {
+      font-size: 2rem;
+    }
+  }
+}
