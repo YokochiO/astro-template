@@ -1,11 +1,16 @@
 ---
+// CSSのインポートは以下の順番通りに行われる
+// 読み込み順で継承順が変わらないように@layerを採用している
+import '@/css/foundation.css'
+import Header from '@/layouts/Header.astro'
+import Main from '@/layouts/Main.astro'
+import Footer from '@/layouts/Footer.astro'
+
 interface Props {
   title: string
 }
 
 const { title } = Astro.props
-
-import '@/scss/style.css'
 ---
 
 <!DOCTYPE html>
@@ -13,23 +18,15 @@ import '@/scss/style.css'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
     <title>{title}</title>
-    <slot name="head" />
+    <slot name="head-additional" />
   </head>
   <body>
-    <slot name="header">
-      <header class="l-header">
-        <h1>My Astro Template</h1>
-      </header>
-    </slot>
-    <main class="l-main">
+    <Header />
+    <Main>
       <slot />
-    </main>
-    <slot name="footer">
-      <footer class="l-footer">
-        <h2>footer</h2>
-      </footer>
-    </slot>
+    </Main>
+    <Footer />
   </body>
 </html>

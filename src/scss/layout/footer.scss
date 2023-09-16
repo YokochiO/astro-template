@@ -1,0 +1,13 @@
+@use '../variables/' as v;
+@use '../object/utility/' as u;
+
+@layer layout.footer {
+  .l-footer {
+    background: rgb(0 0 0 / 0.05);
+    padding: 2rem 0;
+    &__link {
+      text-align: center;
+      font-size: 1.6rem;
+    }
+  }
+}

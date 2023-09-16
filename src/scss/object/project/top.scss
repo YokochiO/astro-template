@@ -1,0 +1,9 @@
+@use '../../variables/' as v;
+@use '../../object/utility/' as u;
+
+@layer project.top {
+  .p-top {
+    max-width: 80ch;
+    margin: 0 auto;
+  }
+}

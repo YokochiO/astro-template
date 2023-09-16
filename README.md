@@ -1,6 +1,16 @@
-# ワイの astro Template
+# ワイの Astro テンプレート
 
 静的ファイルジェネレーターとして使いたい。
+
+## 方針（主に css）
+
+- FLOCSS と`@layer`を採用
+  - カスケードの優先度が css の記述順（ファイルの読み込み順）に依存しないように、`@layer`で強さを明示している
+- なんとなく Astro の流儀に従う
+  - 全体にかかる DefaultLayout.astro では foundation.css をインポートしている
+  - 各コンポーネントは自身に関係する css をインポートする
+- JavaScript は適当に
+- ビルドが遅くなって嫌なので`<Image>`は使わない
 
 ## インストール
 
@@ -24,34 +34,60 @@ npm run dev
 npm run build
 ```
 
-## WordPress テーマ対策
+## VSCode の依存関係
+
+`.workspace`に拡張や sass の設定などがある。他のエディタのことは知らない。
+
+- [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass)
+- [Astro support for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode)
+- [Prettier Formatter for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+## よくわからない点
+
+### 設定ファイルに`base`を設定すると画像などの相対パスに文句を言われる
+
+base/index.html で以下のように記述すると怒られる（ビルドは通る）。パスは正しいのに…
+
+- ❌ `<img src="./img/foo.jpg" />`
+- ⭕ `<img src="/base/img/foo.jpg" />`
+
+## （おまけ）WordPress テーマ対策
 
 - WordPress のテーマも一緒に扱いたい
-- css などの静的ファイルを手動でコピーするのは嫌だ
+- 静的ファイルを手動でコピーするのは嫌だ
 
-ということで、ビルド時に copy.js を実行して css や画像などのフォルダをコピーする。
+ということで、ビルド時に copy.js を実行して静的ファイルをコピーする。
 
 ### copy.js
 
 ```js
 const toDir = './wordpress-theme' // コピー先（WordPressのテーマフォルダ）
-const files = ['img', '_astro'] // コピーするファイル
+const files = ['img', '_astro'] // コピー元のファイル・フォルダ
 ```
 
 ### package.json
 
+```before.json
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+```
+
 `build`を書き換え、`copy`を追加
 
-```json
-"scripts": {
-  "dev": "astro dev",
-  "start": "astro dev",
-- "build": "astro build",
-  "preview": "astro preview",
-  "astro": "astro",
-+ "build": "astro build && npm run copy",
-+ "copy": "node copy.js"
-},
+```after.json
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && npm run copy",
+    "preview": "astro preview",
+    "astro": "astro",
+    "copy": "node copy.js"
+  },
 ```
 
 ### .gitignore
@@ -62,15 +98,3 @@ const files = ['img', '_astro'] // コピーするファイル
 wordpress-theme/img
 wordpress-theme/_astro
 ```
-
-## 方針
-
-- 画像の圧縮（最適化）は自前で行う
-- scss から css へのコンパイルは自前で行う
-
-## よくわからない点
-
-### 設定ファイルに`base`を設定すると画像などの相対パスに文句を言われる
-
-- ❌ `<img src="./img/foo.jpg" />`
-- ⭕ `<img src="/base/img/foo.jpg" />`

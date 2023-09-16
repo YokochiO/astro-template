@@ -3,16 +3,18 @@
 
 $defaultFontsize: 62.5%;
 
-:root {
-  @each $type, $group in v.$var {
-    @each $k, $v in $group {
-      --#{$type}-#{$k}: #{$v};
+@layer foundation.root {
+  :root {
+    @each $type, $group in v.$var {
+      @each $k, $v in $group {
+        --#{$type}-#{$k}: #{$v};
+      }
     }
+    font-size: $defaultFontsize;
+    font-family: v.get(ff, default);
+    font-weight: v.get(fw, default);
+    font-feature-settings: 'palt' 1;
+    color: v.cl(text);
+    background-color: v.cl(bg);
   }
-  font-size: $defaultFontsize;
-  font-family: v.get(ff, default);
-  font-weight: v.get(fw, default);
-  font-feature-settings: 'palt' 1;
-  color: v.cl(text);
-  background-color: v.cl(bg);
 }

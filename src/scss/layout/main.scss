@@ -1,0 +1,8 @@
+@use '../variables/' as v;
+@use '../object/utility/' as u;
+
+@layer layout.main {
+  .l-main {
+    padding: 2rem 0;
+  }
+}

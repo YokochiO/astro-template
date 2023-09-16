@@ -7,13 +7,14 @@
   "settings": {
     "liveSassCompile.settings.formats": [
       {
-        "format": "compressed",
-        "extensionName": ".css",
-        "savePath": "~/."
+        // "format": "compressed",
+        // "extensionName": ".css",
+        "savePath": "/src/css"
       }
     ],
     "liveSassCompile.settings.showOutputWindowOn": "Error",
-    "liveSassCompile.settings.watchOnLaunch": true
+    "liveSassCompile.settings.watchOnLaunch": true,
+    "liveSassCompile.settings.generateMap": false
   },
   "extensions": {
     "recommendations": [

@@ -1,8 +1,21 @@
 ---
 import DefaultLayout from '@/layouts/DefaultLayout.astro'
+import '@/css/top.css'
+
+import Heading from '@/components/Heading.astro'
 ---
 
 <DefaultLayout title="My Astro Template">
-  <p class="logo"></p>
-  <h2>main</h2>
+  <!--
+    Default.astroの`<slot name="head-additional" />`に要素を追加している。
+    `<Fragment>`はReactでの`<>`に相当する空のグループ。
+   -->
+  <Fragment slot="head-additional">
+    <meta name="description" content="ワイのAstroテンプレート" />
+  </Fragment>
+
+  <section class="p-top">
+    <p class="logo"></p>
+    <Heading Hn="h2">方針</Heading>
+  </section>
 </DefaultLayout>

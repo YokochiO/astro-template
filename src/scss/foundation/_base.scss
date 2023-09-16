@@ -1,47 +1,77 @@
 @use '../variables/' as v;
 @use '../object/utility/' as u;
 
-// フォームの部品
-:where(input, textarea, select) {
-  all: revert;
-  display: block;
-  margin: 0;
-  padding: 0;
-  font-family: v.get(ff, default);
-  font-size: v.fs(default);
-  color: v.cl(text);
-}
-
-// クリッカブルな要素
-:where([role='button'], [tabindex], summary, label, button, select, a[href]) {
-  cursor: pointer;
-  // フォーカスできるならアウトラインつける
-  &:focus-visible {
-    outline: 4px solid v.cl(outline);
-    outline-offset: 1px;
+@layer foundation.base {
+  // フォームの部品
+  :where(input:not([type='hidden']), textarea, select) {
+    all: revert;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+    font-family: v.get(ff, default);
+    font-size: v.fs(default);
+    color: v.cl(text);
   }
-}
 
-// summary
-:where(summary) {
-  cursor: pointer;
-  list-style: none;
-  &::-webkit-details-marker {
-    display: none;
+  // クリッカブルな要素
+  :where(
+      button,
+      [role='button'],
+      input[type='submit'],
+      input[type='image'],
+      input[type='file'],
+      input[type='button'],
+      input[type='color'],
+      input[type='checkbox'],
+      input[type='radio'],
+      [tabindex],
+      summary,
+      label,
+      select,
+      a[href]
+    ) {
+    cursor: pointer;
+    // フォーカスできるならアウトラインつける
+    &:focus-visible {
+      outline: 4px solid v.cl(outline);
+      outline-offset: 1px;
+    }
   }
-}
 
-// 画像とiframeはblock要素
-:where(img, iframe) {
-  display: block;
-  max-width: 100%;
-}
+  // disabled
+  :where([disabled]) {
+    cursor: not-allowed;
+  }
 
-// 中身が少なくてもフッターを画面下に配置する
-:where(html, body) {
-  min-height: 100vh;
-}
-:where(body > footer) {
-  position: sticky;
-  top: 100vh;
+  // summary
+  :where(summary) {
+    cursor: pointer;
+    list-style: none;
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  // 画像とiframeはblock要素
+  :where(img, iframe) {
+    display: block;
+    max-width: 100%;
+  }
+
+  // 中身が少なくてもフッターを画面下に配置する
+  :where(html, body) {
+    min-height: 100vh;
+  }
+  :where(body > footer) {
+    position: sticky;
+    top: 100vh;
+  }
+
+  // リンク
+  :where(a[href]) {
+    color: #0969da;
+  }
 }

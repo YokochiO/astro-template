@@ -5,7 +5,9 @@ import { defineConfig } from 'astro/config'
 export default defineConfig({
   integrations: [
     compress({
-      css: false,
+      css: {
+        sourceMap: true,
+      },
       img: false,
       svg: false,
       html: {
