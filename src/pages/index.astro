@@ -2,7 +2,7 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro'
 import Heading from '@/components/Heading.astro'
 
-import '@/css/p-top.css'
+import '@/scss/object/component/text.scss'
 ---
 
 <DefaultLayout title="ワイのAstroテンプレート">
@@ -18,7 +18,7 @@ import '@/css/p-top.css'
     ここから下がDefaultLayout.astroの`<slot>`に挿入される。
    -->
   <section class="p-top">
-    <Heading Hn="h2">index</Heading>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, nemo. Non pariatur eos ut et, eius amet earum repellat sed ea nostrum maiores necessitatibus, dolorem expedita deleniti magni minima doloribus?</p>
+    <Heading Hn="h2">Top</Heading>
+    <p class="c-text__p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, nemo. Non pariatur eos ut et, eius amet earum repellat sed ea nostrum maiores necessitatibus, dolorem expedita deleniti magni minima doloribus?</p>
   </section>
 </DefaultLayout>

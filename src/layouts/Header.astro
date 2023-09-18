@@ -1,6 +1,7 @@
 ---
-import '@/css/l-header.css'
-import '@/css/c-nav.css'
+import MainNav from '@/components/MainNav.astro';
+
+import '@/scss/layout/header.scss'
 ---
 
 <style>
@@ -16,14 +17,9 @@ import '@/css/c-nav.css'
 </style>
 
 <header class="l-header">
-  <nav class="c-nav">
-    <ul>
-      <li><a href="/">top</a></li>
-      <li><a href="/page">page</a></li>
-    </ul>
-  </nav>
+  <MainNav />
   <hgroup>
-    <p class="logo"><img src="/img/favicon.svg" alt="" /></p>
+    <p class="logo"><img src="/img/favicon.svg" alt="" width="160" height="160" /></p>
     <h1 class="l-header__h1">ワイのAstroテンプレート</h1>
   </hgroup>
 </header>

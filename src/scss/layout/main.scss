@@ -3,8 +3,8 @@
 
 @layer layout.main {
   .l-main {
-    padding: 2rem 0;
-    width: min(120ch, 100%);
+    padding: 2rem 4rem 6rem;
+    width: min(calc(120ch + 8rem), 100%);
     margin: 0 auto;
   }
 }

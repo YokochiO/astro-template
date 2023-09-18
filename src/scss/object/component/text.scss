@@ -1,0 +1,12 @@
+@use '../../variables/' as v;
+@use '../../object/utility/' as u;
+
+@layer component.text {
+  .c-text__p {
+    font-size: 1.6rem;
+    line-height: 1.75;
+    &:not(:last-child) {
+      margin-bottom: 1.5em;
+    }
+  }
+}

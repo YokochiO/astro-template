@@ -7,9 +7,9 @@
 - FLOCSS と`@layer`を採用
   - カスケードの優先度が css の記述順（ファイルの読み込み順）に依存しないように、`@layer`で強さを明示している
 - なんとなく Astro の流儀に従う
-  - 全体にかかる DefaultLayout.astro では foundation.css をインポートしている
-  - 各コンポーネントは自身に関係する css をインポートする
-  - なんか逆に面倒くさくないか? という時は DefaultLayout.astro で全ての css をインポートしてしまう方法もある。
+  - 全体にかかる DefaultLayout.astro では foundation.scss をインポートしている
+  - 各コンポーネントは自身に関係する scss をインポートする
+  - なんか逆に面倒くさくないか? という時は DefaultLayout.astro で全ての (s)css をインポートしてしまう方法もある。
 - JavaScript はどうしよう?
 
 ## インストール
@@ -39,6 +39,7 @@ npm run build
 `.workspace`に拡張や sass の設定などがある。他のエディタのことは知らない。
 
 - [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass)
+  - sass は Astro でコンパイルするため不要になった。css ファイルを書き出さないように`settings.excludeList`を指定している。
 - [Astro support for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode)
 - [Prettier Formatter for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
@@ -61,8 +62,9 @@ base/index.html で以下のように記述すると怒られる（ビルドは�
 ### copy.js の設定
 
 ```js
+const fromDir = './dist' // コピー元のフォルダ
 const toDir = './wordpress-theme' // コピー先（WordPressのテーマフォルダ）
-const files = ['img', '_astro'] // コピー元のファイル・フォルダ
+const files = ['img', '_astro'] // fromDir内のこれらをコピーする
 ```
 
 ### package.json

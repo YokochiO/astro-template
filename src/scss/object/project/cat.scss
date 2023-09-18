@@ -1,0 +1,21 @@
+@use '../../variables/' as v;
+@use '../../object/utility/' as u;
+
+@layer project.cat {
+  .p-cat__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max(18rem, 30%), 1fr));
+    gap: 1rem;
+    li {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      background: rgb(0 0 0 / 0.1);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

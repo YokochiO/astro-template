@@ -1,0 +1,27 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro'
+import Heading from '@/components/Heading.astro'
+
+import '@/scss/object/component/text.scss'
+import '@/scss/object/project/cat.scss'
+
+// スクリプトをインポートする際は拡張子を省略するか[js][jsx]にせよ、とのこと。
+// ファイルが.tsでも.jsでインポートできる。まぎらわしいけど。
+// https://docs.astro.build/ja/guides/imports/#typescript
+import cats from '@/scripts/getcats'
+---
+
+<DefaultLayout title="ねこ | ワイのAstroテンプレート">
+  <section class="p-page">
+    <Heading Hn="h2">ねこ</Heading>
+    <p class="c-text__p"><a href="https://thecatapi.com/">The Cat API</a></p>
+    <p class="c-text__p">ビルドすると静的なURLを出力するためランダム表示ではなくなる。これを防ぐには<code>&lt;script&gt;</code>要素にJavaScriptを書いてやればよい。でも以下のようなループ部分はどうするのだろう?</p>
+    <ul class="p-cat__list">
+      {
+        cats.map((i) => (
+          <li><img src={i.url} alt="" width={i.width} height={i.height} loading="lazy" fetchpriority="low"></li>
+        ))
+      }
+    </ul>
+  </section>
+</DefaultLayout>

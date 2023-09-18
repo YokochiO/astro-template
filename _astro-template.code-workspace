@@ -5,16 +5,7 @@
     }
   ],
   "settings": {
-    "liveSassCompile.settings.formats": [
-      {
-        "format": "expanded",
-        "extensionName": ".css",
-        "savePath": "/src/css"
-      }
-    ],
-    "liveSassCompile.settings.showOutputWindowOn": "Error",
-    "liveSassCompile.settings.watchOnLaunch": true,
-    "liveSassCompile.settings.generateMap": false
+    "liveSassCompile.settings.excludeList": ["/src/scss/**"]
   },
   "extensions": {
     "recommendations": [
