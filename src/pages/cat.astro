@@ -2,13 +2,13 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro'
 import Heading from '@/components/Heading.astro'
 
-import '@/scss/object/component/text.scss'
-import '@/scss/object/project/cat.scss'
-
 // スクリプトをインポートする際は拡張子を省略するか[js]または[jsx]にせよ、とのこと。
 // ファイルが.tsでも.jsでインポートできる。まぎらわしいけど。
 // https://docs.astro.build/ja/guides/imports/#typescript
 import cats from '@/scripts/getcats'
+
+import '@c/text.scss'
+import '@p/cat.scss'
 ---
 
 <DefaultLayout title="ねこ | ワイのAstroテンプレート">

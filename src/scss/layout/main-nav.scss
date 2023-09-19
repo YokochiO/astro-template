@@ -1,7 +1,7 @@
-@use '../../variables/' as v;
-@use '../../object/utility/' as u;
+@use '../variables/' as v;
+@use '../object/utility/' as u;
 
-@layer component.nav {
+@layer component.main-nav {
   .c-nav {
     margin: 0 0 2rem;
     padding: 2rem 0;

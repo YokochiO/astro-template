@@ -3,7 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@c/*": ["src/scss/object/component/*"],
+      "@p/*": ["src/scss/object/project/*"]
     }
   }
 }
