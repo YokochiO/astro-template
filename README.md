@@ -6,11 +6,39 @@
 
 - FLOCSS と`@layer`を採用
   - カスケードの優先度が css の記述順（ファイルの読み込み順）に依存しないように、`@layer`で強さを明示している
+  - Astro のコンポーネントと FLOCSS の構造が上手くマッチするような気がしている
 - なんとなく Astro の流儀に従う
   - 全体にかかる DefaultLayout.astro では foundation.scss をインポートしている
   - 各コンポーネントは自身に関係する scss をインポートする
-  - なんか逆に面倒くさくないか? という時は DefaultLayout.astro で全ての (s)css をインポートしてしまう方法もある。
-- JavaScript はどうしよう?
+  - なんか逆に面倒くさくないか? という時は DefaultLayout.astro で全ての (s)css をインポートしてしまう作戦もありそう
+  - でも`.astro`内に (s)css を書くのはやめよう
+
+## ディレクトリ構成
+
+たぶんコロコロ変わる。
+
+- **public**  
+  静的ファイルを置く。この中身は基本的にそのまま dist へコピーされる
+  - **js**  
+    `<script>`で読み込む js ファイルはここに置く
+  - **img**  
+    ファビコンとか
+- **src**
+  - **components**  
+    汎用的に使われそうなパーツ  
+    見出し・ボタンなど
+  - **layouts**  
+    複数ページで共通の HTML 部品  
+    全体の枠となるレイアウトの他にヘッダー・メインナビなど  
+    components との違いはなんとなく
+  - **pages**  
+    ページ。ファイル名が URL となるようにルーティングしてくれる
+  - **scripts**  
+    Astro からインポートされる js/ts
+  - **scss**  
+    そのまま
+
+なお、Astro 君は`src`以下のファイルしか監視していない模様で、public 内のファイルを更新してもホットリロードしてくれない。
 
 ## インストール
 
@@ -40,7 +68,7 @@ npm run build
 
 - [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass)
   - sass は Astro でコンパイルするため不要になった。css ファイルを書き出さないように`settings.excludeList`を指定している。
-- [Astro support for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode)
+- [Astro support for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) ← 必須
 - [Prettier Formatter for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 ## よくわからない点

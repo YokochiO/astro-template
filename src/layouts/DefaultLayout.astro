@@ -1,7 +1,7 @@
 ---
 // ビュートランジション
 // https://docs.astro.build/ja/guides/view-transitions/
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from 'astro:transitions'
 
 // CSSのインポートは以下の順番通りに行われるのだけど
 // コンポーネントを読み込んだりしていると一定にならない。
@@ -12,14 +12,14 @@ import Main from '@/layouts/Main.astro'
 import Footer from '@/layouts/Footer.astro'
 
 interface Props {
-  title: string,
+  title: string
   htmlClass?: string | undefined
 }
 
 const { title, htmlClass } = Astro.props
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja" class={htmlClass ?? htmlClass}>
   <head>
     <meta charset="UTF-8" />
