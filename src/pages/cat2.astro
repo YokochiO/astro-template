@@ -1,0 +1,33 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro'
+import Heading from '@/components/Heading.astro'
+
+import '@c/text.scss'
+import '@p/cat.scss'
+---
+
+<script>
+  // script要素はデフォルトでmoduleとしてロードされるため
+  // トップレベルawaitが使えるし、DOMContentLoadedを待つ必要もない
+  const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=9')
+  const cats: [{ url: string; width: number; height: number }] = await res.json()
+
+  cats.forEach((cat) => {
+    const li = document.createElement('li')
+    const img = document.createElement('img')
+    img.src = cat.url
+    img.width = cat.width
+    img.height = cat.height
+    img.alt = ''
+    img.loading = 'lazy'
+    li.appendChild(img)
+    document.getElementById('cats')?.appendChild(li)
+  })
+</script>
+
+<DefaultLayout title="動的ねこ | ワイのAstroテンプレート">
+  <section class="p-page">
+    <Heading Hn="h2">動的ねこ</Heading>
+    <ul id="cats" class="p-cat__list"></ul>
+  </section>
+</DefaultLayout>
