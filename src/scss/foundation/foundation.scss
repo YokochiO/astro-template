@@ -2,14 +2,12 @@
 
 @layer foundation, layout, component, project;
 
-@layer foundation {
-  @layer reset {
-    @include meta.load-css('./reset');
-  }
-  @layer root {
-    @include meta.load-css('./root');
-  }
-  @layer base {
-    @include meta.load-css('./base');
-  }
+@layer foundation.reset {
+  @include meta.load-css('./reset');
+}
+@layer foundation.root {
+  @include meta.load-css('./root');
+}
+@layer foundation.base {
+  @include meta.load-css('./base');
 }

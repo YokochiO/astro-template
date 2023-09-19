@@ -3,6 +3,9 @@
 // https://docs.astro.build/ja/guides/view-transitions/
 import { ViewTransitions } from 'astro:transitions'
 
+// このscssファイルは他より先に読み込む必要がある(@layerを定義している)
+import '@/scss/foundation/foundation.scss'
+
 import Header from '@/layouts/Header.astro'
 import Main from '@/layouts/Main.astro'
 import Footer from '@/layouts/Footer.astro'
@@ -13,8 +16,6 @@ interface Props {
 }
 
 const { title, htmlClass } = Astro.props
-
-import '@/scss/foundation/foundation.scss'
 ---
 
 <!doctype html>

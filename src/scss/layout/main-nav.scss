@@ -1,8 +1,8 @@
 @use '../variables/' as v;
 @use '../object/utility/' as u;
 
-@layer component.main-nav {
-  .c-nav {
+@layer layout.main-nav {
+  .l-main-nav {
     margin: 0 0 2rem;
     padding: 2rem 0;
     background: rgb(0 0 0 / 0.05);
