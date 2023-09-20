@@ -19,7 +19,7 @@ const { title, htmlClass } = Astro.props
 ---
 
 <!doctype html>
-<html lang="ja" class={htmlClass ?? htmlClass}>
+<html lang="ja" class={htmlClass && htmlClass}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -7,27 +7,38 @@ import '@p/cat.scss'
 ---
 
 <script>
-  // script要素はデフォルトでmoduleとしてロードされるため
-  // トップレベルawaitが使えるし、DOMContentLoadedを待つ必要もない
   const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=9')
   const cats: [{ url: string; width: number; height: number }] = await res.json()
 
-  cats.forEach((cat) => {
-    const li = document.createElement('li')
-    const img = document.createElement('img')
-    img.src = cat.url
-    img.width = cat.width
-    img.height = cat.height
-    img.alt = ''
-    img.loading = 'lazy'
-    li.appendChild(img)
-    document.getElementById('cats')?.appendChild(li)
+  const addCats = () => {
+    cats.forEach((cat) => {
+      const li = document.createElement('li')
+      const img = document.createElement('img')
+      img.src = cat.url
+      img.width = cat.width
+      img.height = cat.height
+      img.alt = ''
+      img.loading = 'lazy'
+      li.appendChild(img)
+      document.getElementById('cats')?.appendChild(li)
+    })
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    addCats()
   })
+
+  document.dispatchEvent(new Event('astro:page-load'))
 </script>
 
 <DefaultLayout title="動的ねこ | ワイのAstroテンプレート">
   <section class="p-page">
     <Heading Hn="h2">動的ねこ</Heading>
+    <p class="c-text__p">ビュートランジションと組み合わせる場合はなかなか面倒で、ページロード時とページ遷移時の両方に対応しないといけない。</p>
+    <p class="c-text__p">
+      というのも、このファイルにあるscriptはページロード時に一回だけ実行され、ビュートランジションが有効なページ遷移では何もしないからで、つまりページロード時とページ遷移時を別物としてそれぞれでscriptを走らせることになる。
+    </p>
+    <p class="c-text__p">なんかはまりそうなので回避したいが、根本的な策はビュートランジションを使わないことになりそう。手っ取り早い方法として、このページへのリンクに<code>data-astro-reload</code>属性をつけるというものがある。</p>
     <ul id="cats" class="p-cat__list"></ul>
   </section>
 </DefaultLayout>
