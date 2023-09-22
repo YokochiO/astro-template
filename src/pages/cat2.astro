@@ -6,37 +6,33 @@ import '@c/text.scss'
 import '@p/cat.scss'
 ---
 
-<script>
-  const getCats = async () => {
-    const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=9')
-    const cats: [{ url: string; width: number; height: number }] = await res.json()
-    return cats
-  }
-
-  const addCats = async () => {
-    const cats = await getCats()
-    cats.forEach((cat) => {
-      const li = document.createElement('li')
-      const img = document.createElement('img')
-      img.src = cat.url
-      img.width = cat.width
-      img.height = cat.height
-      img.alt = ''
-      img.loading = 'lazy'
-      li.appendChild(img)
-      document.getElementById('cats')?.appendChild(li)
-    })
-  }
-
-  document.addEventListener('astro:page-load', () => {
-    addCats()
-  })
-</script>
-
 <DefaultLayout title="動的ねこ | ワイのAstroテンプレート">
+  <script is:inline>
+    async function getCats() {
+      const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=9')
+      const cats = await res.json()
+      return cats
+    }
+    async function addCats() {
+      const cats = await getCats()
+      cats.forEach((cat) => {
+        const li = document.createElement('li')
+        const img = document.createElement('img')
+        img.src = cat.url
+        img.width = cat.width
+        img.height = cat.height
+        img.alt = ''
+        img.loading = 'lazy'
+        li.appendChild(img)
+        document.getElementById('cats')?.appendChild(li)
+      })
+    }
+    addCats()
+  </script>
   <section class="p-page">
     <Heading Hn="h2">動的ねこ</Heading>
-    <p class="c-text__p">ビュートランジションと組み合わせる場合は<code>astro:page-load</code>イベントで猫データをフェッチしてくることになる。この場合、リロードやページ遷移のたびにフェッチが実行される。</p>
+    <p class="c-text__p">ビュートランジション採用時はインラインに書くしかなさそう。面倒くせー！</p>
+    <p class="c-text__p">なお、トップレベルに<code>const</code>を書くと定義済みだと怒られる。</p>
     <ul id="cats" class="p-cat__list"></ul>
   </section>
 </DefaultLayout>
