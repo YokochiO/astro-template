@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@c/*": ["src/scss/object/component/*"],
-      "@p/*": ["src/scss/object/project/*"]
+      "@c/*": ["src/styles/scss/object/component/*"],
+      "@p/*": ["src/styles/scss/object/project/*"]
     }
   }
 }
