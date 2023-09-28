@@ -7,6 +7,13 @@ import '@p/cat.scss'
 ---
 
 <DefaultLayout title="動的ねこ | ワイのAstroテンプレート">
+  <section class="p-page">
+    <Heading Hn="h2">動的ねこ</Heading>
+    <p class="c-text__p">ビュートランジション採用時はインラインに書くしかなさそう。面倒くせー！</p>
+    <p class="c-text__p">なお、トップレベルに<code>const</code>を書くと、ページ遷移時に定義済みだと怒られる。</p>
+    <ul id="cats" class="p-cat__list"></ul>
+  </section>
+
   <script is:inline>
     async function getCats() {
       const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=9')
@@ -29,10 +36,4 @@ import '@p/cat.scss'
     }
     addCats()
   </script>
-  <section class="p-page">
-    <Heading Hn="h2">動的ねこ</Heading>
-    <p class="c-text__p">ビュートランジション採用時はインラインに書くしかなさそう。面倒くせー！</p>
-    <p class="c-text__p">なお、トップレベルに<code>const</code>を書くと、ページ遷移時に定義済みだと怒られる。</p>
-    <ul id="cats" class="p-cat__list"></ul>
-  </section>
 </DefaultLayout>
