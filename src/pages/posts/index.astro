@@ -14,16 +14,19 @@ import '@c/text.scss'
     <Heading Hn="h1">記事</Heading>
     <p>
       <a href="https://docs.astro.build/ja/guides/content-collections/">コンテンツコレクション</a>はファイルベースのDBのようなもので、
-      <code>/src/content/</code>以下のファイルをグループ化して取得できる。
+      <code>/src/content/</code>直下のフォルダをグループとして取得できる。
     </p>
+    <p>以下の例では、<code>config.ts</code>はファイルなので無視される（というかコレクションの定義ファイル）が、<code>posts</code>フォルダはコレクションの親として設定でき、この中身をコレクションの子として取得できる。</p>
     <Code
       lang="console"
       code={`
-src/content/posts
-├── post-1.md
-├── post-2.md
-├── post-3.md
-└── post-4.md
+src/content
+├── config.ts
+└── posts
+    ├── post-1.md
+    ├── post-2.md
+    ├── post-3.md
+    └── post-4.md
 `}
     />
     <p>詳しくは以下の記事を参照してね。</p>

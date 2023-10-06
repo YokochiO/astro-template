@@ -2,7 +2,7 @@
 @use '../object/utility/' as u;
 
 // フォームの部品
-:where(input:not([type='hidden']), textarea, select) {
+:is(input:not([type='hidden']), textarea, select) {
   all: revert;
   display: block;
   margin: 0;
@@ -16,7 +16,7 @@
 }
 
 // クリッカブルな要素
-:where(
+:is(
     button,
     [role='button'],
     input[type='submit'],
@@ -41,12 +41,12 @@
 }
 
 // disabled
-:where([disabled]) {
+[disabled] {
   cursor: not-allowed;
 }
 
 // summary
-:where(summary) {
+summary {
   cursor: pointer;
   list-style: none;
   &::-webkit-details-marker {
@@ -55,21 +55,21 @@
 }
 
 // 画像とiframeはblock要素
-:where(img, iframe) {
+:is(img, iframe) {
   display: block;
   max-width: 100%;
 }
 
 // 中身が少なくてもフッターを画面下に配置する
-:where(html, body) {
+:is(html, body) {
   min-height: 100vh;
 }
-:where(body > footer) {
+:is(body > footer) {
   position: sticky;
   top: 100vh;
 }
 
 // リンク
-:where(a[href]) {
+a[href] {
   color: #0969da;
 }
