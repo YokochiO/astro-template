@@ -4,16 +4,22 @@
 
 ## 方針（主に css）
 
-- [FLOCSS](https://github.com/hiloki/flocss) と `@layer` を採用
-  - カスケードの優先度が css の記述順（ファイルの読み込み順）に依存しないように、`@layer` で強さを明示している
-  - Astro のコンポーネントと FLOCSS の構造が上手くマッチするような気がしている
-- なんとなく Astro の流儀に従う
+### [FLOCSS](https://github.com/hiloki/flocss) と [カスケードレイヤー](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Cascade_layers) を採用
+
+Astro のコンポーネントと FLOCSS の構造が上手くマッチするような気がしている。
+
+- カスケードの優先度が css の記述順（ファイルの読み込み順）に依存しないように、`@layer` で強さを明示している
+- レイアウトの部品やコンポーネントは自身に関係のある scss をインポートする
   - 全体にかかる `DefaultLayout.astro` では `foundation.scss` をインポートしている
-  - 各コンポーネントは自身に関係する scss をインポートする
-- Astro の流儀に従わないこともある
-  - `DefaultLayout.astro` で全ての (s)css をインポートしてしまう作戦もありそう
-  - `.astro` 内に (s)css は書きません
-  - スクリプトも `is:inline` 以外はファイルに書いてインポートする
+  - `<MainNav>` は `scss/layout/main-nav.scss` をインポートする、みたいな
+
+なお `@layer` は無指定のほうが強いので、面倒だからと省略するとすぐに破綻する。
+
+### Astro の流儀に従わないこともある
+
+- `DefaultLayout.astro` で全ての (s)css をインポートしてしまう作戦もありそう
+- `.astro` 内に (s)css は書きません
+- スクリプトも `is:inline` 以外はファイルに書いてインポートする（これは普通）
 
 ## ディレクトリ構成
 
@@ -28,7 +34,7 @@ src
 ├── pages
 ├── scripts
 └── styles
-      └── scss
+    └── scss
 ```
 
 ### `public`

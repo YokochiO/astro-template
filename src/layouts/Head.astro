@@ -1,0 +1,17 @@
+---
+// ビュートランジション
+// https://docs.astro.build/ja/guides/view-transitions/
+import { ViewTransitions } from 'astro:transitions'
+
+type Props = { title: string }
+const { title } = Astro.props
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+  <title>{title}</title>
+  <slot />
+  <ViewTransitions />
+</head>

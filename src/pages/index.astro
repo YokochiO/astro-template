@@ -2,6 +2,7 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro'
 import Heading from '@/components/Heading.astro'
 
+import '@p/top.scss'
 import '@c/text.scss'
 ---
 
@@ -9,6 +10,8 @@ import '@c/text.scss'
   <!--
     DefaultLayout.astroの`<slot name="head-additional" />`に要素を追加している。
     `<Fragment>`はReactでの`<>`に相当する空のグループ。
+
+    DefaultLayout.astroはさらに`<Head>`の<slot>へ渡す。
    -->
   <Fragment slot="head-additional">
     <meta name="description" content="ワイのAstroテンプレート" />
@@ -18,7 +21,9 @@ import '@c/text.scss'
     ここから下がDefaultLayout.astroの`<slot>`に挿入される。
    -->
   <section class="p-top">
-    <Heading Hn="h2">Top</Heading>
-    <p class="c-text__p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, nemo. Non pariatur eos ut et, eius amet earum repellat sed ea nostrum maiores necessitatibus, dolorem expedita deleniti magni minima doloribus?</p>
+    <hgroup>
+      <p class="logo"><img src="/img/favicon.svg" alt="" width="160" height="160" /></p>
+      <Heading Hn="h1">ワイのAstro🚀テンプレート</Heading>
+    </hgroup>
   </section>
 </DefaultLayout>

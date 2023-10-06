@@ -2,4 +2,11 @@
 @use '../../object/utility/' as u;
 
 @layer project.top {
+  .p-top {
+    .logo {
+      width: min(100%, 16rem);
+      height: auto;
+      margin: 0 auto 2rem;
+    }
+  }
 }

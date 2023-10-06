@@ -4,22 +4,6 @@ import MainNav from '@/layouts/MainNav.astro'
 import '@/styles/scss/layout/header.scss'
 ---
 
-<style>
-  /*
-    コンポーネント固有のcssを使ってみる
-    楽だけど乱用するとグチャグチャになりそう。
-  */
-  .logo {
-    width: min(100%, 16rem);
-    height: auto;
-    margin: 0 auto 2rem;
-  }
-</style>
-
 <header class="l-header">
   <MainNav />
-  <hgroup>
-    <p class="logo"><img src="/img/favicon.svg" alt="" width="160" height="160" /></p>
-    <h1 class="l-header__h1">ワイのAstro🚀テンプレート</h1>
-  </hgroup>
 </header>

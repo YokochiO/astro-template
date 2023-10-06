@@ -8,9 +8,9 @@ import '@p/cat.scss'
 
 <DefaultLayout title="動的ねこ | ワイのAstroテンプレート">
   <section class="p-page">
-    <Heading Hn="h2">動的ねこ</Heading>
-    <p class="c-text__p">ビュートランジション採用時はインラインに書くしかなさそう。面倒くせー！</p>
-    <p class="c-text__p">なお、トップレベルに<code>const</code>を書くと、ページ遷移時に定義済みだと怒られる。</p>
+    <Heading Hn="h1">動的ねこ</Heading>
+    <p>こちらはインラインに&lt;script&gt;を書いているため、ページロードのたびにAPIを叩きに行く。</p>
+    <p><a href="https://docs.astro.build/ja/guides/view-transitions/">ビュートランジション</a>採用時はトップレベルに<code>const</code>を書くとページ遷移時に定義済みだと怒られる。</p>
     <ul id="cats" class="p-cat__list"></ul>
   </section>
 

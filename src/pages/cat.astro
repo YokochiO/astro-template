@@ -2,8 +2,7 @@
 import DefaultLayout from '@/layouts/DefaultLayout.astro'
 import Heading from '@/components/Heading.astro'
 
-// スクリプトをインポートする際は拡張子を省略するか[js]または[jsx]にせよ、とのこと。
-// ファイルが.tsでも.jsでインポートできる。まぎらわしいけど。
+// ts/jsのインポート
 // https://docs.astro.build/ja/guides/imports/#typescript
 import cats from '@/scripts/getcats'
 
@@ -13,14 +12,14 @@ import '@p/cat.scss'
 
 <DefaultLayout title="ねこ | ワイのAstroテンプレート">
   <section class="p-page">
-    <Heading Hn="h2">ねこ</Heading>
-    <p class="c-text__p"><a href="https://thecatapi.com/">The Cat API</a></p>
-    <p class="c-text__p">dev時でもbuildされたファイルでも、一回だけフェッチして静的なファイルをキャッシュするため本来のランダム表示は行われない。→<a href="/cat2/">動的ねこ</a></p>
+    <Heading Hn="h1">ねこ</Heading>
+    <p>/src/pages/内のファイルはいわゆる固定ページとしてルーティングされる。</p>
+    <p>画像は<a href="https://thecatapi.com/">The Cat API</a>より。dev時でもbuildされたファイルでも、一回だけフェッチして静的なファイルをキャッシュするためランダム表示してくれるのは最初だけ。→ <a href="/cat2/">動的ねこ</a></p>
     <ul class="p-cat__list">
       {
-        cats.map((i) => (
+        cats.map((cat) => (
           <li>
-            <img src={i.url} alt="" width={i.width} height={i.height} loading="lazy" fetchpriority="low" />
+            <img src={cat.url} alt="" width={cat.width} height={cat.height} loading="lazy" fetchpriority="low" />
           </li>
         ))
       }

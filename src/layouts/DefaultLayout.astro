@@ -1,33 +1,24 @@
 ---
-// ビュートランジション
-// https://docs.astro.build/ja/guides/view-transitions/
-import { ViewTransitions } from 'astro:transitions'
-
-// このscssファイルは他より先に読み込む必要がある(@layerを定義している)
+// このscssファイルは他のコンポーネントより先に読み込む必要がある(@layerを定義している)
 import '@/styles/scss/foundation/foundation.scss'
 
+import Head from '@/layouts/Head.astro'
 import Header from '@/layouts/Header.astro'
 import Main from '@/layouts/Main.astro'
 import Footer from '@/layouts/Footer.astro'
 
 interface Props {
   title: string
-  htmlClass?: string | undefined
+  htmlClass?: string
 }
 
 const { title, htmlClass } = Astro.props
 ---
 
-<!doctype html>
 <html lang="ja" class={htmlClass && htmlClass}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
-    <title>{title}</title>
+  <Head title={title}>
     <slot name="head-additional" />
-    <ViewTransitions />
-  </head>
+  </Head>
   <body>
     <Header />
     <Main>

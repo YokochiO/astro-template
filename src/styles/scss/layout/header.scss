@@ -2,10 +2,4 @@
 @use '../object/utility/' as u;
 
 @layer layout.header {
-  .l-header {
-    &__h1 {
-      font-size: 3rem;
-      text-align: center;
-    }
-  }
 }

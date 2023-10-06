@@ -3,11 +3,11 @@
 
 @layer component.heading {
   .c-heading {
-    &__h2 {
-      font-size: 2.4rem;
+    &__h1 {
+      font-size: 3rem;
       font-weight: 600;
-      margin: 0 0 4rem;
-      padding: 2rem 0 0;
+      text-align: center;
+      margin: 0 0 3rem;
     }
   }
 }

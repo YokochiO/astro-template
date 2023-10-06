@@ -4,15 +4,15 @@
 
 interface Props {
   Hn: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  className?: string
+  class?: string
 }
 
-const { Hn, className, ...attrs } = Astro.props
+const { Hn, ...attrs } = Astro.props
 const defaultClass = `c-heading__${Hn}`
 
 import '@c/heading.scss'
 ---
 
-<Hn class={className ?? defaultClass} {...attrs}>
+<Hn class={attrs.class ?? defaultClass} {...attrs}>
   <slot />
 </Hn>

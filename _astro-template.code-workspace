@@ -5,7 +5,7 @@
     }
   ],
   "settings": {
-    "liveSassCompile.settings.excludeList": ["/src/scss/**"]
+    "liveSassCompile.settings.excludeList": ["/src/styles/scss/**"]
   },
   "extensions": {
     "recommendations": [

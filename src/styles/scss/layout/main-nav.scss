@@ -10,7 +10,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(max-content, 10rem));
       justify-content: center;
-      gap: 0 1rem;
+      gap: 1rem;
     }
     a {
       display: block;
@@ -20,6 +20,7 @@
       border: 1px solid rgb(0 0 0 / 0.2);
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
+      text-decoration: none;
     }
   }
 }
