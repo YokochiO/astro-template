@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content'
+import DefaultLayout from '@/layouts/DefaultLayout.astro'
+import Heading from '@/components/Heading.astro'
+import { Code } from 'astro:components'
+
+const posts = await getCollection('posts')
+
+import '@c/text.scss'
+---
+
+<DefaultLayout title="記事 | ワイのAstro🚀テンプレート">
+  <section class="p-page">
+    <Heading Hn="h1">記事</Heading>
+    <p>
+      <a href="https://docs.astro.build/ja/guides/content-collections/">コンテンツコレクション</a>はファイルベースのDBのようなもので、
+      <code>/src/content/</code>以下のファイルをグループ化して取得できる。
+    </p>
+    <Code
+      lang="console"
+      code={`
+src/content/posts
+├── post-1.md
+├── post-2.md
+├── post-3.md
+└── post-4.md
+`}
+    />
+    <p>詳しくは以下の記事を参照してね。</p>
+    <Heading Hn="h2">目次</Heading>
+    <ol>
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</DefaultLayout>

@@ -6,26 +6,40 @@
     font-size: 1.6rem;
     line-height: 1.75;
     &:not(:last-child) {
-      margin-bottom: 1.5em;
+      margin-bottom: 1.5rem;
     }
   }
-  a[href^='http'] {
-    &::after {
-      content: '🡥';
-      display: inline-block;
-      margin: 0 0.5rem 0 0.25rem;
-      padding: 0.2rem 0.3rem;
-      font-size: 1rem;
-      line-height: 1;
-      border: 1px solid #0969da;
-      border-radius: 2px;
-      vertical-align: text-top;
+  main {
+    :is(ul, ol, li):not([class]) {
+      all: revert;
+      font-size: 1.6rem;
+    }
+    a {
+      text-decoration: underline;
+    }
+    a[href^='http'] {
+      &::after {
+        content: '🡥';
+        display: inline-block;
+        margin: 0 0.5rem 0 0.25rem;
+        padding: 0.2rem 0.3rem;
+        font-size: 1rem;
+        line-height: 1;
+        border: 1px solid #0969da;
+        border-radius: 2px;
+        vertical-align: text-top;
+      }
     }
   }
-
+  :not(.astro-code) > code:not([class]) {
+    display: inline-block;
+    margin: 0 0.5rem;
+    font-family: monospace;
+    color: rgb(0 0 0 / 0.75);
+  }
   .astro-code {
     font-size: 1.6rem;
-    margin-top: 0;
+    margin: 0 0 2rem;
     padding: 0 2rem 2rem;
     cursor: auto;
   }

@@ -11,10 +11,17 @@ import '@p/cat.scss'
 ---
 
 <DefaultLayout title="ねこ | ワイのAstroテンプレート">
+  <Fragment slot="head-additional">
+    <meta name="description" content="ねこ from The Cat API - 固定ページとスクリプトのインポート例" />
+  </Fragment>
+
   <section class="p-page">
     <Heading Hn="h1">ねこ</Heading>
-    <p>/src/pages/内のファイルはいわゆる固定ページとしてルーティングされる。</p>
-    <p>画像は<a href="https://thecatapi.com/">The Cat API</a>より。dev時でもbuildされたファイルでも、一回だけフェッチして静的なファイルをキャッシュするためランダム表示してくれるのは最初だけ。→ <a href="/cat2/">動的ねこ</a></p>
+    <p><code>/src/pages/</code>内のファイルはいわゆる固定ページとしてルーティングされる。</p>
+    <p>
+      画像は<a href="https://thecatapi.com/">The Cat API</a>より。
+      <code>dev</code>時でも<code>build</code>されたファイルでも、一回だけフェッチして静的なファイルをキャッシュするためランダム表示してくれるのは最初だけ。 → <a href="/cat2/">動的ねこ</a>
+    </p>
     <ul class="p-cat__list">
       {
         cats.map((cat) => (
