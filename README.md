@@ -30,8 +30,11 @@ public
 └── img
 src
 ├── components
+├── content
+│   └── posts
 ├── layouts
 ├── pages
+│   └── posts
 ├── scripts
 └── styles
     └── scss
@@ -47,11 +50,19 @@ src
 
 汎用的に使いそうなパーツ。ボタン、カードなど。
 
+### `src/content`
+
+[コンテンツコレクション](https://docs.astro.build/ja/guides/content-collections/)用。
+
 ### `src/layouts`
 
-各ページで共通に使われるパーツ。レイアウトに含まれるヘッダーやフッターなどもここ。
+各ページで共通に使われるパーツ。レイアウトに含まれるヘッダーやフッターなどもここ。`src/components`との違いは使われる頻度。適当だなあ。
 
 FLOCSS の構成に合わせてもいいかもしれない。その場合、`src/components` 内のボタンコンポーネントなどは `src/layouts/object/component` 以下に移動することになりそう。
+
+### `src/pages`
+
+[ページ](https://docs.astro.build/ja/core-concepts/astro-pages/)用。
 
 ### `src/scripts`
 
