@@ -1,0 +1,9 @@
+---
+type Props = { caption?: string }
+const { caption } = Astro.props
+---
+
+<Figure>
+  {caption && <figcaption>{caption}</figcaption>}
+  <slot />
+</Figure>

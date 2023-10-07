@@ -40,7 +40,18 @@
   .astro-code {
     font-size: 1.6rem;
     margin: 0 0 2rem;
-    padding: 0 2rem 2rem;
+    padding: 2rem;
     cursor: auto;
+  }
+
+  .codeblock {
+    figcaption {
+      font-family: monospace;
+      font-size: 1.6rem;
+      width: fit-content;
+      padding: 0.5rem 1rem;
+      border: 1px solid #000;
+      border-bottom: 0;
+    }
   }
 }

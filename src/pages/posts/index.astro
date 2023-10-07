@@ -2,35 +2,16 @@
 import { getCollection } from 'astro:content'
 import DefaultLayout from '@/layouts/DefaultLayout.astro'
 import Heading from '@/components/Heading.astro'
-import { Code } from 'astro:components'
 
 const posts = await getCollection('posts')
 
 import '@c/text.scss'
 ---
 
-<DefaultLayout title="記事 | ワイのAstro🚀テンプレート">
+<DefaultLayout title="記事サンプル | ワイのAstro🚀テンプレート">
   <section class="p-page">
-    <Heading Hn="h1">記事</Heading>
-    <p>
-      <a href="https://docs.astro.build/ja/guides/content-collections/">コンテンツコレクション</a>はファイルベースのDBのようなもので、
-      <code>/src/content/</code>直下のフォルダをグループとして取得できる。
-    </p>
-    <p>以下の例では、<code>config.ts</code>はファイルなので無視される（というかコレクションの定義ファイル）が、<code>posts</code>フォルダはコレクションの親として設定でき、この中身をコレクションの子として取得できる。</p>
-    <Code
-      lang="console"
-      code={`
-src/content
-├── config.ts
-└── posts
-    ├── post-1.md
-    ├── post-2.md
-    ├── post-3.md
-    └── post-4.md
-`}
-    />
-    <p>詳しくは以下の記事を参照してね。</p>
-    <Heading Hn="h2">目次</Heading>
+    <Heading Hn="h1">記事サンプル</Heading>
+    <p><a href="https://docs.astro.build/ja/guides/content-collections/">コンテンツコレクション</a>のサンプル。</p>
     <ol>
       {
         posts.map((post) => (
