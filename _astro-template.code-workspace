@@ -5,13 +5,17 @@
     }
   ],
   "settings": {
-    "liveSassCompile.settings.excludeList": ["/src/styles/scss/**"]
+    "liveSassCompile.settings.excludeList": ["/src/styles/scss/**"],
+    "files.associations": {
+      "*.md": "markdown"
+    }
   },
   "extensions": {
     "recommendations": [
       "glenn2223.live-sass",
       "astro-build.astro-vscode",
-      "esbenp.prettier-vscode"
+      "esbenp.prettier-vscode",
+      "unifiedjs.vscode-mdx"
     ]
   }
 }
