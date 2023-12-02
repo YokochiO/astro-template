@@ -1,4 +1,6 @@
 ---
+import '@c/heading.scss'
+
 // 動的タグ
 // https://docs.astro.build/ja/core-concepts/astro-syntax/#%E5%8B%95%E7%9A%84%E3%82%BF%E3%82%B0
 
@@ -9,8 +11,6 @@ interface Props {
 
 const { Hn, ...attrs } = Astro.props
 const defaultClass = `c-heading__${Hn}`
-
-import '@c/heading.scss'
 ---
 
 <Hn class={attrs.class ?? defaultClass} {...attrs}>

@@ -34,6 +34,7 @@ import '@p/cat.scss'
         img.height = cat.height
         img.alt = ''
         img.loading = 'lazy'
+        img.fetchPriority = 'low'
         li.appendChild(img)
         document.getElementById('cats')?.appendChild(li)
       })

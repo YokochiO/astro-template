@@ -2,10 +2,9 @@
 import { getCollection } from 'astro:content'
 import DefaultLayout from '@/layouts/DefaultLayout.astro'
 import Heading from '@/components/Heading.astro'
+import '@c/text.scss'
 
 const posts = await getCollection('posts')
-
-import '@c/text.scss'
 ---
 
 <DefaultLayout title="記事サンプル | ワイのAstro🚀テンプレート">
