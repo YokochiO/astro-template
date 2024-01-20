@@ -11,8 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.6.4",
+    "astro": "^4.2.1",
     "fs-extra": "^11.2.0",
-    "sass": "^1.69.5"
+    "sass": "^1.70.0"
   }
 }
