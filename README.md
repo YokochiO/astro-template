@@ -103,15 +103,6 @@ npm run build
 - [Astro support for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) ← 必須
 - [Prettier Formatter for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-## よくわからない点
-
-### 設定ファイルに`base`を設定すると画像などの相対パスに文句を言われる
-
-base/index.html で以下のように記述すると怒られる（ビルドは通る）。パスは正しいのに…
-
-- ❌ `<img src="./img/foo.jpg" />`
-- ⭕ `<img src="/base/img/foo.jpg" />`
-
 ## （おまけ）WordPress テーマ対策
 
 - どうせなら WordPress のテーマも一緒に扱いたい
