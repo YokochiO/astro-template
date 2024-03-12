@@ -6,4 +6,9 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  vite: {
+    css: {
+      devSourcemap: true,
+    },
+  },
 })
